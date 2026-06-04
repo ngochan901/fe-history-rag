@@ -24,6 +24,7 @@ import ArticleDetail from './pages/user/ArticleDetail';
 import UserPosts from './pages/user/UserPosts'; 
 import LocationDetail from './pages/user/LocationDetail';
 import HistoricalMap from './pages/user/HistoricalMap';
+import TermsAndPrivacy from './pages/user/TermsAndPrivacy';
 
 // --- NHÓM TRANG QUẢN TRỊ (ADMIN) ---
 // Dashboard
@@ -92,6 +93,7 @@ function App() {
           <Route path="ai-chat" element={<AIChat />} />
           <Route path="locations/:id" element={<LocationDetail />} />
           <Route path="map" element={<HistoricalMap />} /> 
+          <Route path="terms" element={<TermsAndPrivacy />} />
 
         </Route>
 
