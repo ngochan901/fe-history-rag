@@ -49,7 +49,7 @@ const Login = () => {
               </div>
 
               <button type="submit" className="w-full bg-primary text-white py-4 font-headline text-xl hover:bg-primary/90 active:scale-95 transition-all shadow-md flex items-center justify-center gap-2">
-                <span>Tiến bước</span>
+                <span>Đăng nhập</span>
                 <span className="material-symbols-outlined text-[20px]">login</span>
               </button>
             </form>

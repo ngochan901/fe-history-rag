@@ -3,8 +3,28 @@ import { useParams, Link } from 'react-router-dom';
 
 const ArticleDetail = () => {
   const { slug } = useParams();
+  // --- STATE CHO LIKE ---
   const [likes, setLikes] = useState(1240);
   const [isLiked, setIsLiked] = useState(false);
+
+  // --- STATE CHO COMMENT ---
+  const [commentInput, setCommentInput] = useState('');
+  const [commentList, setCommentList] = useState([
+    {
+      id: 1,
+      user: "TS. Lê Văn Ninh",
+      role: "Viện Sử học",
+      date: "2 giờ trước",
+      text: "Bài viết rất sâu sắc. Tôi đặc biệt quan tâm đến nhận định về hệ thống đấu củng thời Lý. Liệu tác giả có thêm dữ liệu về sự so sánh giữa đấu củng Thăng Long và triều đại nhà Tống đương thời không?"
+    },
+    {
+      id: 2,
+      user: "Học giả Minh Anh",
+      role: "Nghiên cứu viên độc lập",
+      date: "5 giờ trước",
+      text: "Phần phân tích về hình tượng rồng thời Trần rất thuyết phục, thể hiện rõ tinh thần thượng võ của dân tộc sau đại thắng Nguyên Mông."
+    }
+  ]);
 
   // Dữ liệu mẫu (Thực tế sẽ fetch từ API dựa trên slug)
   const article = {
@@ -21,6 +41,29 @@ const ArticleDetail = () => {
   const handleLike = () => {
     setLikes(prev => isLiked ? prev - 1 : prev + 1);
     setIsLiked(!isLiked);
+  };
+  
+  const handleCommentSubmit = (e) => {
+    e.preventDefault();
+    if (!commentInput.trim()) return;
+
+    const newComment = {
+      id: Date.now(),
+      user: "Bạn (Học giả)",
+      role: "Thành viên sử học",
+      date: "Vừa xong",
+      text: commentInput
+    };
+
+    setCommentList([newComment, ...commentList]);
+    setCommentInput('');
+  };
+
+    // --- HÀM XÓA BÌNH LUẬN ---
+  const handleDeleteComment = (id) => {
+    if(window.confirm("Bạn có chắc chắn muốn gỡ bỏ bình luận này?")) {
+      setCommentList(commentList.filter(item => item.id !== id));
+    }
   };
 
   return (
@@ -105,38 +148,71 @@ const ArticleDetail = () => {
 
           {/* Engagement Section */}
           <section className="py-12 border-t border-outline-variant/30 mt-20">
-            <div className="flex flex-wrap items-center justify-between gap-6">
-              <div className="flex items-center gap-8">
+            <div className="flex items-center gap-10">
                 <button 
                   onClick={handleLike}
-                  className={`flex items-center gap-2 group transition-all ${isLiked ? 'text-primary' : 'text-on-surface-variant hover:text-primary'}`}
+                  className={`flex items-center gap-3 group transition-all ${isLiked ? 'text-primary' : 'text-on-surface-variant hover:text-primary'}`}
                 >
-                  <span className={`material-symbols-outlined transition-all ${isLiked ? 'fill-1' : ''}`} style={{ fontVariationSettings: isLiked ? "'FILL' 1" : "" }}>favorite</span>
-                  <span className="font-mono text-[11px] font-bold tracking-widest">{likes.toLocaleString()}</span>
+                  <span className="material-symbols-outlined text-3xl" style={{ fontVariationSettings: isLiked ? "'FILL' 1" : "'FILL' 0" }}>favorite</span>
+                  <span className="font-mono text-sm font-bold tracking-widest">{likes.toLocaleString()}</span>
                 </button>
-                <button className="flex items-center gap-2 text-on-surface-variant hover:text-primary group transition-all">
-                  <span className="material-symbols-outlined">chat_bubble</span>
-                  <span className="font-mono text-[11px] font-bold tracking-widest">42 THẢO LUẬN</span>
-                </button>
-              </div>
-              <button className="flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-lg font-headline font-bold text-[10px] uppercase tracking-widest shadow-lg hover:brightness-110 active:scale-95 transition-all">
-                <span className="material-symbols-outlined text-sm">bookmark</span> LƯU TƯ LIỆU
-              </button>
+                <div className="flex items-center gap-3 text-on-surface-variant">
+                  <span className="material-symbols-outlined text-3xl">chat_bubble</span>
+                  <span className="font-mono text-sm font-bold tracking-widest uppercase">{commentList.length} Thảo luận</span>
+                </div>
             </div>
 
-            {/* Comment Section Placeholder */}
-            <div className="mt-16 space-y-10">
-              <h3 className="font-headline text-2xl text-primary font-bold italic">Đàm đạo học thuật</h3>
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0">
-                  <span className="material-symbols-outlined">person</span>
+            {/* --- COMMENT SYSTEM --- */}
+            <div className="mt-16 space-y-12">
+              <h3 className="font-headline text-3xl text-primary font-bold italic border-b border-primary/10 pb-4">Đàm đạo học thuật</h3>
+              
+              {/* Form nhập bình luận */}
+              <form onSubmit={handleCommentSubmit} className="flex gap-6 items-start">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0 shadow-inner">
+                  <span className="material-symbols-outlined text-2xl">person</span>
                 </div>
                 <div className="flex-1">
-                  <textarea className="w-full bg-white/50 border-b-2 border-outline-variant focus:border-primary outline-none p-4 font-body text-sm italic transition-all resize-none h-24" placeholder="Gửi ý kiến phản biện hoặc bổ sung..."></textarea>
+                  <textarea 
+                    value={commentInput}
+                    onChange={(e) => setCommentInput(e.target.value)}
+                    className="w-full bg-white border-b-2 border-outline-variant focus:border-primary outline-none p-4 font-body text-base italic transition-all resize-none h-28 shadow-sm" 
+                    placeholder="Gửi luận điểm phản biện hoặc bổ sung..."
+                  ></textarea>
                   <div className="flex justify-end mt-4">
-                    <button className="bg-primary text-white px-8 py-2 rounded font-mono text-[10px] font-bold uppercase tracking-widest">Gửi luận điểm</button>
+                    <button type="submit" className="bg-primary text-white px-10 py-2 rounded-sm font-mono text-[10px] font-bold uppercase tracking-widest hover:brightness-110 shadow-lg active:scale-95 transition-all">Gửi luận điểm</button>
                   </div>
                 </div>
+              </form>
+
+              {/* Danh sách bình luận cũ */}
+              <div className="space-y-10 pt-8">
+                {commentList.map((comment) => (
+                  <div key={comment.id} className="group relative flex gap-6 items-start animate-in fade-in slide-in-from-left-4 duration-500">
+                    <div className="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center shrink-0 border border-outline-variant/30">
+                       <span className="material-symbols-outlined text-on-surface-variant">account_circle</span>
+                    </div>
+                    <div className="space-y-2 flex-1 pr-12">
+                       <div className="flex items-center gap-3">
+                          <h4 className="font-headline font-bold text-primary italic text-lg leading-none">{comment.user}</h4>
+                          <span className="h-1 w-1 rounded-full bg-outline-variant"></span>
+                          <span className="font-mono text-[9px] uppercase font-bold text-on-surface-variant opacity-60 tracking-widest">{comment.date}</span>
+                       </div>
+                       <p className="font-mono text-[9px] uppercase font-bold text-accent tracking-tighter">{comment.role}</p>
+                       <p className="text-on-surface-variant font-body text-base leading-relaxed italic">
+                          "{comment.text}"
+                       </p>
+                    </div>
+
+                    {/* NÚT XÓA BÌNH LUẬN (Hiện ra khi hover hoặc luôn hiện) */}
+                    <button 
+                      onClick={() => handleDeleteComment(comment.id)}
+                      className="absolute top-0 right-0 p-2 text-on-surface-variant opacity-0 group-hover:opacity-100 hover:text-red-600 transition-all"
+                      title="Xóa bình luận"
+                    >
+                      <span className="material-symbols-outlined text-lg">delete</span>
+                    </button>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
@@ -175,14 +251,6 @@ const ArticleDetail = () => {
             </ul>
           </section>
 
-          {/* AI Helper Banner */}
-          <div className="bg-[#6B1515] p-8 rounded-xl text-white space-y-4 shadow-2xl relative overflow-hidden group cursor-pointer">
-             <div className="absolute inset-0 dong-son-pattern opacity-10 group-hover:scale-110 transition-transform duration-[10s]"></div>
-             <span className="material-symbols-outlined text-accent text-3xl relative z-10">psychology</span>
-             <h5 className="font-headline text-xl font-bold italic relative z-10">Hỏi đáp với Sử Quan AI</h5>
-             <p className="text-[11px] opacity-70 leading-relaxed relative z-10 italic">Giải mã sâu hơn về kiến trúc Thăng Long thông qua trí tuệ nhân tạo RAG.</p>
-             <button className="w-full py-2 bg-white/10 border border-white/20 text-[10px] font-bold uppercase tracking-widest hover:bg-white/20 transition-all relative z-10">Bắt đầu thảo luận</button>
-          </div>
         </aside>
       </main>
     </div>

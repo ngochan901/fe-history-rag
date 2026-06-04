@@ -111,9 +111,9 @@ const UserLayout = () => {
             </p>
           </div>
           <div className="flex justify-center md:justify-end gap-12 font-mono text-[10px] font-bold uppercase tracking-widest text-on-surface-variant self-end">
-             <Link to="#" className="hover:text-primary">Quy định</Link>
-             <Link to="#" className="hover:text-primary">Liên hệ</Link>
-             <Link to="/admin" className="text-primary underline">Quản trị</Link>
+            <Link to="/terms" className="hover:text-primary transition-colors border-b border-transparent hover:border-primary">Quy định & Điều khoản</Link>
+            <Link to="#" className="hover:text-primary">Liên hệ</Link>
+            <Link to="/admin" className="text-primary underline">Quản trị</Link>
           </div>
         </div>
       </footer>
