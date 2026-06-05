@@ -79,9 +79,13 @@ const EventManagement = () => {
                     </span>
                   </td>
                   <td className="px-6 py-4 text-right">
-                    <div className="flex justify-end gap-1 opacity-60 group-hover:opacity-100 transition-opacity">
-                      <button onClick={() => navigate(`/admin/events/edit/${event.id}`)} className="p-2 hover:text-primary"><span className="material-symbols-outlined text-sm">edit</span></button>
-                      <button onClick={() => setDeleteModal({ open: true, itemName: event.name, id: event.id })} className="p-2 hover:text-red-600"><span className="material-symbols-outlined text-sm">delete</span></button>
+                    <div className="flex justify-end gap-1">
+                      <button onClick={() => navigate(`/admin/events/edit/${event.id}`)} className="p-2 text-primary hover:bg-primary/10 rounded-full transition-colors" title="Chỉnh sửa">
+                        <span className="material-symbols-outlined text-lg">edit</span>
+                      </button>
+                      <button onClick={() => setDeleteModal({ open: true, itemName: event.name, id: event.id })} className="p-2 text-red-600 hover:bg-red-50 rounded-full transition-colors" title="Xóa bỏ">
+                        <span className="material-symbols-outlined text-lg">delete</span>
+                      </button>
                     </div>
                   </td>
                 </tr>

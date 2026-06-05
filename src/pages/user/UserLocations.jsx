@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const UserLocations = () => {
+  // --- STATE QUẢN LÝ LỌC & TÌM KIẾM ---
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedRegion, setSelectedRegion] = useState('Tất cả');
+
   // Dữ liệu đầy đủ 6 địa danh lịch sử tiêu biểu
   const locations = [
     { 
@@ -54,12 +58,21 @@ const UserLocations = () => {
     }
   ];
 
+    // --- LOGIC LỌC DỮ LIỆU ---
+  const filteredLocations = locations.filter(loc => {
+    const matchesSearch = loc.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                          loc.province.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesRegion = selectedRegion === 'Tất cả' || loc.region === selectedRegion;
+    return matchesSearch && matchesRegion;
+  });
+
   return (
     <div className="max-w-[1440px] mx-auto px-12 py-16 font-body animate-in fade-in duration-700">
-      {/* 1. BODY HEADER: TIÊU ĐỀ ĐỒNG BỘ */}
-      <header className="mb-12 space-y-4 border-l-4 border-primary pl-8">
-        <span className="bg-primary/10 text-primary px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] rounded-sm">Bản Đồ Di Sản</span>
-        <h1 className="font-headline text-4xl md:text-5xl text-primary font-bold italic tracking-tight leading-none">
+      
+      {/* 1. BODY HEADER */}
+      <header className="mb-20 space-y-4 border-l-4 border-primary pl-8">
+        <span className="bg-primary/10 text-primary px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] rounded-sm">Địa Đồ Di Sản</span>
+        <h1 className="font-headline text-5xl md:text-6xl text-primary font-bold italic tracking-tight leading-none">
           Danh sách Địa danh Lịch sử
         </h1>
         <p className="font-body text-lg text-on-surface-variant max-w-3xl leading-relaxed italic">
@@ -67,84 +80,113 @@ const UserLocations = () => {
         </p>
       </header>
 
-      {/* 2. FILTER BAR: ĐỒNG BỘ MÀU SẮC */}
-      <div className="bg-white border border-outline-variant/30 p-8 rounded-2xl shadow-sm flex flex-col md:flex-row gap-8 items-end mb-16 relative overflow-hidden">
-         <div className="absolute inset-0 bg-primary/5 opacity-40 dong-son-pattern"></div>
-         <div className="flex-1 space-y-3 relative z-10 w-full">
-            <label className="font-mono text-[9px] font-bold text-primary uppercase tracking-widest opacity-60">Tìm kiếm địa danh</label>
-            <div className="relative border-b-2 border-primary/20 focus-within:border-primary transition-all">
-              <span className="absolute left-0 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant">travel_explore</span>
-              <input type="text" className="w-full bg-transparent pl-8 py-2 outline-none italic text-sm font-body" placeholder="Nhập tên cố đô, thành quách..." />
-            </div>
-         </div>
-         <button className="bg-primary text-white px-10 py-3 rounded-lg font-headline font-bold text-xs uppercase shadow-xl hover:brightness-110 active:scale-95 transition-all relative z-10 tracking-widest">
-           Lọc kết quả
-         </button>
-      </div>
-
-      {/* 3. CONTENT GRID: HIỂN THỊ ĐỦ 6 ĐỊA DANH */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {locations.map(loc => (
-          <article key={loc.id} className="group bg-white border border-outline-variant/30 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col relative">
-            
-            {/* Image Header */}
-            <div className="h-64 overflow-hidden relative">
-              <img 
-                src={loc.image} 
-                className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" 
-                alt={loc.name} 
+      <div className="flex flex-col lg:flex-row gap-16">
+        
+        {/* 2. LEFT SIDEBAR: BỘ LỌC */}
+        <aside className="w-full lg:w-64 flex-shrink-0 space-y-12">
+          
+          {/* Mục Tìm kiếm */}
+          <section>
+            <h3 className="font-mono text-[10px] text-secondary uppercase font-bold tracking-[0.2em] mb-4 border-b border-outline-variant/30 pb-2">Tìm kiếm</h3>
+            <div className="relative border-b-2 border-outline-variant focus-within:border-primary transition-all">
+              <input 
+                type="text" 
+                placeholder="Tên địa danh, tỉnh..." 
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full bg-transparent py-2 pr-10 outline-none italic text-sm font-body" 
               />
-              <div className="absolute top-4 left-4">
-                <span className="bg-white/90 backdrop-blur-md px-3 py-1 font-mono text-[9px] font-bold text-primary uppercase shadow-sm tracking-widest">
-                  {loc.type}
-                </span>
-              </div>
+              <span className="material-symbols-outlined absolute right-0 top-2 text-secondary">travel_explore</span>
             </div>
+          </section>
 
-            {/* Content Body */}
-            <div className="p-8 space-y-4 border-t-[3px] border-primary/5 flex-grow">
-               <div className="flex justify-between items-start">
-                  <h3 className="font-headline text-2xl text-primary font-bold italic tracking-tight leading-tight group-hover:text-primary transition-colors">
-                    {loc.name}
-                  </h3>
-                  <span className="material-symbols-outlined text-primary/30 group-hover:text-primary transition-colors">bookmark</span>
-               </div>
-               <p className="font-body text-sm text-on-surface-variant leading-relaxed line-clamp-3 italic opacity-80">
-                 "{loc.desc}"
-               </p>
-               <div className="pt-4 flex gap-2">
-                  <span className="bg-surface-low text-on-surface-variant px-2 py-0.5 rounded-sm text-[9px] font-mono font-bold border border-outline-variant/30 uppercase tracking-tighter shadow-sm">
-                    UNESCO
+          {/* Lọc theo Vùng miền */}
+          <section>
+            <h3 className="font-mono text-[10px] text-secondary uppercase font-bold tracking-[0.2em] mb-6 border-b border-outline-variant/30 pb-2 flex items-center gap-2">
+              <span className="material-symbols-outlined text-sm">map</span> VÙNG MIỀN
+            </h3>
+            <div className="space-y-4">
+              {['Tất cả', 'Bắc', 'Trung', 'Nam'].map(region => (
+                <label key={region} className="flex items-center gap-3 cursor-pointer group text-sm font-medium transition-all">
+                  <div className="relative flex items-center justify-center">
+                    <input type="radio" name="region" checked={selectedRegion === region} onChange={() => setSelectedRegion(region)} className="peer appearance-none w-5 h-5 border-2 border-outline-variant rounded-full checked:border-primary transition-all" />
+                    <div className="absolute w-2.5 h-2.5 bg-primary rounded-full scale-0 peer-checked:scale-100 transition-transform"></div>
+                  </div>
+                  <span className={`${selectedRegion === region ? 'text-primary font-bold text-lg italic font-headline' : 'text-on-surface-variant'} group-hover:text-primary transition-colors`}>
+                    {region === 'Tất cả' ? 'Toàn quốc' : `Miền ${region}`}
                   </span>
-                  <span className="bg-surface-low text-on-surface-variant px-2 py-0.5 rounded-sm text-[9px] font-mono font-bold border border-outline-variant/30 uppercase tracking-tighter shadow-sm">
-                    {loc.province}
-                  </span>
-               </div>
+                </label>
+              ))}
             </div>
+          </section>
+        </aside>
 
-            {/* Footer action */}
-        <div className="px-8 pb-6">
-          <Link 
-            to={`/locations/${loc.id}`} 
-            className="inline-block text-primary font-mono text-[10px] font-bold uppercase tracking-[0.2em] border-b border-primary/20 pb-0.5 hover:border-primary transition-all active:scale-95"
-          >
-            Khám phá chi tiết
-          </Link>
-      </div>
-    </article>
-        ))}
-      </div>
+        {/* 3. MAIN CONTENT: GRID CARDS */}
+        <div className="flex-1">
+          {filteredLocations.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+              {filteredLocations.map(loc => (
+                <article key={loc.id} className="group bg-white border border-outline-variant/30 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col relative shadow-sm">
+                  
+                  <Link to={`/locations/${loc.id}`} className="h-64 overflow-hidden relative block">
+                    <img 
+                      src={loc.image} 
+                      className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" 
+                      alt={loc.name} 
+                    />
+                    <div className="absolute top-4 left-4 flex gap-2">
+                      <span className="bg-white/90 backdrop-blur-md px-3 py-1 font-mono text-[9px] font-bold text-primary uppercase shadow-sm tracking-widest">
+                        {loc.type}
+                      </span>
+                    </div>
+                  </Link>
 
-      {/* 4. PAGINATION */}
-      <div className="flex justify-center mt-24 gap-3">
-        <button className="w-10 h-10 flex items-center justify-center border border-outline-variant rounded-full text-secondary opacity-30 cursor-not-allowed transition-all">
-          <span className="material-symbols-outlined">chevron_left</span>
-        </button>
-        <button className="w-10 h-10 flex items-center justify-center bg-primary text-white font-bold text-xs rounded-full shadow-lg">1</button>
-        <button className="w-10 h-10 flex items-center justify-center border border-outline-variant text-secondary hover:bg-primary hover:text-white transition-all font-bold text-xs rounded-full">2</button>
-        <button className="w-10 h-10 flex items-center justify-center border border-outline-variant text-secondary hover:bg-primary hover:text-white transition-all rounded-full">
-          <span className="material-symbols-outlined">chevron_right</span>
-        </button>
+                  <div className="p-8 space-y-4 border-t-[3px] border-primary/5 flex-grow">
+                     <h3 className="font-headline text-2xl text-primary font-bold italic tracking-tight leading-tight group-hover:text-primary transition-colors">
+                       {loc.name}
+                     </h3>
+                     <p className="font-body text-sm text-on-surface-variant leading-relaxed line-clamp-3 italic opacity-80">
+                       "{loc.desc}"
+                     </p>
+                     <div className="pt-4 flex gap-2">
+                        <span className="bg-surface-low text-on-surface-variant px-2 py-0.5 rounded-sm text-[9px] font-mono font-bold border border-outline-variant/30 uppercase tracking-tighter shadow-sm">
+                          UNESCO
+                        </span>
+                        <span className="bg-primary/5 text-primary px-2 py-0.5 rounded-sm text-[9px] font-mono font-bold border border-primary/10 uppercase tracking-tighter shadow-sm">
+                          {loc.province}
+                        </span>
+                     </div>
+                  </div>
+
+                  <div className="px-8 pb-6 mt-auto">
+                     <Link 
+                       to={`/locations/${loc.id}`} 
+                       className="inline-block text-primary font-mono text-[10px] font-bold uppercase tracking-[0.2em] border-b border-primary/20 pb-0.5 hover:border-primary transition-all active:scale-95"
+                     >
+                       Khám phá chi tiết
+                     </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center py-40 opacity-40 text-center">
+               <span className="material-symbols-outlined text-6xl mb-4 text-primary">map_search</span>
+               <p className="font-headline text-2xl italic font-bold">Không tìm thấy địa danh nào khớp với bộ lọc</p>
+               <button onClick={() => {setSearchTerm(''); setSelectedRegion('Tất cả')}} className="mt-4 text-primary underline font-bold uppercase text-xs tracking-widest">Xóa bộ lọc</button>
+            </div>
+          )}
+
+          {/* 4. PAGINATION */}
+          {filteredLocations.length > 0 && (
+            <div className="flex justify-center mt-24 gap-4">
+              <button className="w-10 h-10 flex items-center justify-center border border-outline-variant rounded-full text-secondary opacity-30 cursor-not-allowed transition-all"><span className="material-symbols-outlined">chevron_left</span></button>
+              <button className="w-10 h-10 flex items-center justify-center bg-primary text-white font-bold text-xs rounded-full shadow-lg shadow-primary/20">1</button>
+              <button className="w-10 h-10 flex items-center justify-center border border-outline-variant text-secondary hover:bg-primary hover:text-white transition-all font-bold text-xs rounded-full">2</button>
+              <button className="w-10 h-10 flex items-center justify-center border border-outline-variant text-secondary hover:bg-primary hover:text-white transition-all rounded-full"><span className="material-symbols-outlined">chevron_right</span></button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

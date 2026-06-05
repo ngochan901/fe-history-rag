@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const UserEvents = () => {
+  // --- STATE QUẢN LÝ LỌC ---
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedPeriod, setSelectedPeriod] = useState('Tất cả');
+  const [selectedYearRange, setSelectedYearRange] = useState('Tất cả');
+  const [searchYear, setSearchYear] = useState('');
+
   const events = [
     {
       id: 'EVT-1288',
@@ -37,6 +43,24 @@ const UserEvents = () => {
     }
   ];
 
+    // --- LOGIC LỌC DỮ LIỆU ---
+  const filteredEvents = events.filter(event => {
+    const eventYear = parseInt(event.year);
+    const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSpecificYear = !searchYear || event.year === searchYear;
+    const matchesPeriod = selectedPeriod === 'Tất cả' || event.category.includes(selectedPeriod);
+    
+    let matchesRange = true;
+    if (selectedYearRange !== 'Tất cả') {
+      if (selectedYearRange === 'Thế kỷ X - XII') matchesRange = eventYear >= 901 && eventYear <= 1200;
+      if (selectedYearRange === 'Thế kỷ XIII - XV') matchesRange = eventYear >= 1201 && eventYear <= 1500;
+      if (selectedYearRange === 'Thế kỷ XVI - XVIII') matchesRange = eventYear >= 1501 && eventYear <= 1800;
+      if (selectedYearRange === 'Thế kỷ XIX - XX') matchesRange = eventYear >= 1801 && eventYear <= 2000;
+    }
+
+    return matchesSearch && matchesSpecificYear && matchesPeriod && matchesRange;
+  });
+
   return (
     <div className="max-w-[1440px] mx-auto px-12 py-16 font-body animate-in fade-in duration-700">
       {/* 1. HERO HEADER */}
@@ -55,59 +79,115 @@ const UserEvents = () => {
       <div className="flex flex-col lg:flex-row gap-16">
         {/* 2. SIDEBAR FILTER */}
         <aside className="w-full lg:w-64 flex-shrink-0 space-y-12">
+          {/* LỌC THEO THỜI KỲ */}
           <section>
-            <h3 className="font-mono text-[10px] text-secondary uppercase font-bold tracking-[0.2em] mb-6 border-b border-outline-variant/30 pb-2 flex items-center gap-2">
-              <span className="material-symbols-outlined text-sm">filter_list</span> BỘ LỌC
-            </h3>
-            <div className="space-y-6">
-               <div className="space-y-3">
-                  <p className="font-mono text-[9px] font-bold text-primary opacity-60 uppercase">Thời kỳ</p>
-                  {['Triều Lý', 'Triều Trần', 'Triều Lê Sơ', 'Triều Nguyễn'].map(t => (
-                    <label key={t} className="flex items-center gap-3 cursor-pointer group text-sm">
-                      <input type="checkbox" className="rounded-sm border-secondary text-primary focus:ring-primary/20" />
-                      <span className="text-on-surface-variant group-hover:text-primary transition-colors">{t}</span>
-                    </label>
-                  ))}
-               </div>
+            <h3 className="font-mono text-[10px] text-secondary uppercase font-bold tracking-[0.2em] mb-4 border-b border-outline-variant/30 pb-2">Tìm kiếm</h3>
+            <div className="relative border-b-2 border-outline-variant focus-within:border-primary transition-all">
+              <input 
+                type="text" placeholder="Tên sự kiện..." 
+                value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full bg-transparent py-2 pr-10 outline-none italic text-sm font-body" 
+              />
+              <span className="material-symbols-outlined absolute right-0 top-2 text-secondary">search</span>
             </div>
           </section>
 
-          <div className="bg-surface-low p-6 border border-outline-variant/30 relative overflow-hidden group rounded-xl">
-             <div className="relative z-10 space-y-4">
-                <span className="material-symbols-outlined text-primary text-3xl">history_edu</span>
-                <h4 className="font-headline text-xl text-primary font-bold italic">Đóng góp tư liệu</h4>
-                <p className="text-xs text-on-surface-variant leading-relaxed">Bạn có tài liệu hoặc hình ảnh quý hiếm về các sự kiện lịch sử?</p>
-                <button className="text-primary font-mono text-[9px] font-bold uppercase tracking-widest border-b border-primary pb-1 group-hover:translate-x-2 transition-all">Gửi yêu cầu</button>
-             </div>
-          </div>
+          {/* 2. THỜI KỲ */}
+          <section>
+            <h3 className="font-mono text-[10px] text-secondary uppercase font-bold tracking-[0.2em] mb-6 border-b border-outline-variant/30 pb-2 flex items-center gap-2">
+              <span className="material-symbols-outlined text-sm">history_edu</span> THỜI KỲ
+            </h3>
+            <div className="space-y-4">
+              {['Tất cả', 'Triều Lý', 'Triều Trần', 'Triều Lê Sơ', 'Triều Nguyễn'].map(t => (
+                <label key={t} className="flex items-center gap-3 cursor-pointer group">
+                  <div className="relative flex items-center justify-center">
+                    <input 
+                      type="radio" name="period"
+                      checked={selectedPeriod === t}
+                      onChange={() => setSelectedPeriod(t)}
+                      className="peer appearance-none w-5 h-5 border-2 border-outline-variant rounded-full checked:border-primary transition-all" 
+                    />
+                    <div className="absolute w-2.5 h-2.5 bg-primary rounded-full scale-0 peer-checked:scale-100 transition-transform duration-200"></div>
+                  </div>
+                  <span className={`${selectedPeriod === t ? 'text-primary font-bold text-lg italic font-headline' : 'text-on-surface-variant'} group-hover:text-primary transition-colors font-medium`}>{t}</span>
+                </label>
+              ))}
+            </div>
+          </section>
+
+          {/* 3. NIÊN ĐẠI */}
+          <section>
+            <h3 className="font-mono text-[10px] text-secondary uppercase font-bold tracking-[0.2em] mb-6 border-b border-outline-variant/30 pb-2 flex items-center gap-2">
+              <span className="material-symbols-outlined text-sm">event</span> NIÊN ĐẠI
+            </h3>
+            <div className="space-y-4">
+              {['Tất cả', 'Thế kỷ X - XII', 'Thế kỷ XIII - XV', 'Thế kỷ XVI - XVIII', 'Thế kỷ XIX - XX'].map(range => (
+                <label key={range} className="flex items-center gap-3 cursor-pointer group text-sm font-medium transition-all">
+                  <div className="relative flex items-center justify-center">
+                    <input 
+                      type="radio" name="yearRange"
+                      checked={selectedYearRange === range}
+                      onChange={() => setSelectedYearRange(range)}
+                      className="peer appearance-none w-5 h-5 border-2 border-outline-variant rounded-full checked:border-primary transition-all" 
+                    />
+                    <div className="absolute w-2.5 h-2.5 bg-primary rounded-full scale-0 peer-checked:scale-100 transition-transform duration-200"></div>
+                  </div>
+                  <span className={`${selectedYearRange === range ? 'text-primary font-bold text-lg italic font-headline' : 'text-on-surface-variant'} group-hover:text-primary transition-colors`}>{range}</span>
+                </label>
+              ))}
+            </div>
+            
+            {/* Ô nhập năm cụ thể */}
+            <div className="mt-8 space-y-3">
+              <p className="font-mono text-[9px] font-bold text-primary opacity-60 uppercase">Tìm năm cụ thể</p>
+              <div className="relative border-b-2 border-outline-variant focus-within:border-primary transition-all">
+                <input 
+                  type="number" value={searchYear}
+                  onChange={(e) => setSearchYear(e.target.value)}
+                  placeholder="Vd: 1288" 
+                  className="w-full bg-transparent py-2 pr-10 outline-none italic text-sm font-body [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                />
+                <span className="absolute right-0 top-2 material-symbols-outlined text-sm text-secondary">search</span>
+              </div>
+            </div>
+          </section>
         </aside>
 
         {/* 3. CONTENT GRID */}
         <div className="flex-1">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            {events.map((event) => (
-              <article key={event.id} className="bg-white border border-outline-variant/20 hover:border-primary/40 transition-all duration-500 group rounded-2xl overflow-hidden flex flex-col shadow-sm">
-                <div className="h-56 overflow-hidden relative">
-                  <img src={event.image} className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" alt={event.title} />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-primary text-white font-mono text-[10px] font-bold px-3 py-1 rounded-sm shadow-lg">{event.year}</span>
+          {filteredEvents.length > 0 ? (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+              {filteredEvents.map((event) => (
+                <article key={event.id} className="group bg-white border border-outline-variant/20 hover:border-primary/40 transition-all duration-500 group rounded-2xl overflow-hidden flex flex-col shadow-sm hover:shadow-xl">
+                  <div className="h-56 overflow-hidden relative">
+                    <img src={event.image} className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" alt={event.title} />
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-primary text-white font-mono text-[10px] font-bold px-3 py-1 rounded-sm shadow-lg">{event.year}</span>
+                    </div>
                   </div>
-                </div>
-                <div className="p-8 space-y-4 flex-grow">
-                   <span className="font-mono text-[9px] font-bold text-accent uppercase tracking-widest block border-b border-outline-variant/20 pb-2">{event.category}</span>
-                   <h3 className="font-headline text-2xl text-primary font-bold italic tracking-tight group-hover:underline">{event.title}</h3>
-                   <p className="font-body text-sm text-on-surface-variant leading-relaxed line-clamp-3">
-                     {event.desc}
-                   </p>
-                   <div className="pt-4 mt-auto">
-                     <Link to={`/events/${event.id}`} className="text-primary font-mono text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2 group/link">
-                        XEM CHI TIẾT <span className="material-symbols-outlined text-sm group-hover/link:translate-x-2 transition-transform">open_in_new</span>
-                     </Link>
-                   </div>
-                </div>
-              </article>
-            ))}
-          </div>
+                  <div className="p-8 space-y-4 flex-grow">
+                    <span className="font-mono text-[9px] font-bold text-accent uppercase tracking-widest block border-b border-outline-variant/20 pb-2">{event.category}</span>
+                    <h3 className="font-headline text-2xl text-primary font-bold italic tracking-tight group-hover:underline">{event.title}</h3>
+                    <p className="font-body text-sm text-on-surface-variant leading-relaxed line-clamp-3">
+                      {event.desc}
+                    </p>
+                    <div className="pt-4 mt-auto">
+                      <Link to={`/events/${event.id}`} className="text-primary font-mono text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2 group/link">
+                          XEM CHI TIẾT <span className="material-symbols-outlined text-sm group-hover/link:translate-x-2 transition-transform">open_in_new</span>
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            /* Hiển thị khi không có kết quả lọc */
+            <div className="flex flex-col items-center justify-center py-40 opacity-40 text-center">
+               <span className="material-symbols-outlined text-6xl mb-4 text-primary">history_edu</span>
+               <p className="font-headline text-2xl italic font-bold">Không tìm thấy sự kiện nào khớp với bộ lọc</p>
+               <button onClick={() => {setSelectedPeriod('Tất cả'); setSelectedYearRange('Tất cả'); setSearchYear(''); setSearchTerm('')}} className="mt-4 text-primary underline font-bold uppercase text-xs tracking-widest">Đặt lại bộ lọc</button>
+            </div>
+          )}
         </div>
       </div>
     </div>
