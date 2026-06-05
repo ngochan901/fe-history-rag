@@ -8,7 +8,7 @@ const ArticleManagement = () => {
   // Dữ liệu mẫu (Data)
   const articles = [
     { id: 1, title: 'Bình Ngô Đại Cáo - Tuyên ngôn độc lập', slug: 'binh-ngo-dai-cao', period: 'Nhà Hậu Lê (1428)', author: 'Ngô Sĩ Liên', status: 'published' },
-    { id: 2, title: 'Chiến thắng Chương Dương - Hàm Tử', slug: 'chuong-duong-ham-tu', period: 'Nhà Trần (1285)', author: 'Lê Văn Hưu', status: 'review' },
+    { id: 2, title: 'Chiến thắng Chương Dương - Hàm Tử', slug: 'chuong-duong-ham-tu', period: 'Nhà Trần (1285)', author: 'Lê Văn Hưu', status: 'draft' },
     { id: 3, title: 'Sự biến Canh Tý - Lý Chiêu Hoàng', slug: 'su-bien-canh-ty', period: 'Chuyển giao Lý-Trần', author: 'Lê Văn Hưu', status: 'draft' }
   ];
 
@@ -18,7 +18,7 @@ const ArticleManagement = () => {
   return (
     <div className="p-8 max-w-[1600px] mx-auto w-full space-y-8 font-body animate-in fade-in duration-500">
       
-      {/* 1. HEADER CỦA BODY: TIÊU ĐỀ VÀ NÚT THÊM MỚI */}
+      {/* 1. HEADER CỦA BODY */}
       <div className="flex flex-col md:flex-row justify-between items-start gap-4 border-b border-outline-variant/30 pb-8">
         <div>
           <h2 className="font-headline text-4xl text-primary font-bold italic tracking-tight">Quản lý Bài viết Lịch sử</h2>
@@ -71,7 +71,7 @@ const ArticleManagement = () => {
                     <button onClick={() => navigate(`/admin/articles/edit/${item.id}`)} className="p-2 text-primary hover:bg-primary/10 rounded-full transition-colors" title="Chỉnh sửa">
                       <span className="material-symbols-outlined text-lg">edit</span>
                     </button>
-                    <button onClick={() => openModal('archive', item)} className="p-2 text-primary hover:bg-primary/10 rounded-full transition-colors" title="Lưu trữ">
+                    <button onClick={() => openModal('archive', item)} className="p-2 text-amber-600 hover:bg-amber-50 rounded-full transition-colors" title="Lưu trữ">
                       <span className="material-symbols-outlined text-lg">archive</span>
                     </button>
                     <button onClick={() => openModal('delete', item)} className="p-2 text-red-600 hover:bg-red-50 rounded-full transition-colors" title="Xóa bỏ">
@@ -98,7 +98,6 @@ const ArticleManagement = () => {
 };
 
 // --- CÁC COMPONENT BỔ TRỢ ---
-
 const StatBox = ({ label, value, sub, icon, colorClass = "text-primary" }) => (
   <div className="bg-white border border-outline-variant p-6 rounded-xl shadow-sm flex items-center justify-between hover:-translate-y-1 transition-all">
     <div>
@@ -113,7 +112,6 @@ const StatBox = ({ label, value, sub, icon, colorClass = "text-primary" }) => (
 const StatusBadge = ({ status }) => {
   const configs = {
     published: { l: 'Công khai', s: 'bg-green-100 text-green-800' },
-    review: { l: 'Xem xét', s: 'bg-amber-100 text-amber-800' },
     draft: { l: 'Bản nháp', s: 'bg-gray-100 text-gray-700' }
   };
   const c = configs[status] || configs.draft;

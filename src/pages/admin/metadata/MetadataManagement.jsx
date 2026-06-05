@@ -19,7 +19,7 @@ const MetadataManagement = () => {
   const periods = [
     { id: 1, name: 'Hồng Bàng', range: '2879 TCN - 258 TCN', desc: 'Kinh Dương Vương khởi đầu.' },
     { id: 2, name: 'Nhà Lý', range: '1009 - 1225', desc: 'Dời đô về Thăng Long.' },
-    { id: 3, name: 'Nhà Trần', range: '1225 - 1400', desc: 'Đại thắng Nguyên Mông.', active: true },
+    { id: 3, name: 'Nhà Trần', range: '1225 - 1400', desc: 'Đại thắng Nguyên Mông.' },
   ];
 
   const openDelete = (type, item) => setDeleteModal({ open: true, type, name: item.name, id: item.id });
@@ -59,9 +59,13 @@ const MetadataManagement = () => {
                       <p className="text-[10px] text-on-surface-variant italic">{cat.sub}</p>
                     </div>
                   </div>
-                  <div className="flex gap-1 ">
-                     <button onClick={() => navigate(`/admin/metadata/categories/edit/${cat.id}`)} className="material-symbols-outlined text-sm hover:text-primary">edit</button>
-                     <button onClick={() => openDelete('danh mục', cat)} className="material-symbols-outlined text-sm hover:text-red-600">delete</button>
+                  <div className="flex gap-1">
+                    <button onClick={() => navigate(`/admin/metadata/categories/edit/${cat.id}`)} className="p-2 text-primary hover:bg-primary/10 rounded-full transition-colors" title="Sửa">
+                      <span className="material-symbols-outlined text-lg">edit</span>
+                    </button>
+                    <button onClick={() => openDelete('danh mục', cat)} className="p-2 text-red-600 hover:bg-red-50 rounded-full transition-colors" title="Xóa">
+                      <span className="material-symbols-outlined text-lg">delete</span>
+                    </button>
                   </div>
                   
                 </div>
@@ -90,9 +94,15 @@ const MetadataManagement = () => {
                           <span className="font-mono text-[10px] font-bold">{tag.count}</span>
                        </div>
                     </td>
-                    <td className="text-right">
-                       <button onClick={() => navigate(`/admin/metadata/tags/edit/${tag.id}`)} className="material-symbols-outlined text-sm mr-2 hover:text-primary transition-all">edit</button>
-                       <button onClick={() => openDelete('thẻ', tag)} className="material-symbols-outlined text-sm hover:text-red-600 transition-all">delete</button>
+                    <td className="text-right py-2">
+                      <div className="flex justify-end gap-1">
+                        <button onClick={() => navigate(`/admin/metadata/tags/edit/${tag.id}`)} className="p-2 text-primary hover:bg-primary/10 rounded-full transition-colors" title="Sửa">
+                          <span className="material-symbols-outlined text-lg">edit</span>
+                        </button>
+                        <button onClick={() => openDelete('thẻ', tag)} className="p-2 text-red-600 hover:bg-red-50 rounded-full transition-colors" title="Xóa">
+                          <span className="material-symbols-outlined text-lg">delete</span>
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -106,14 +116,18 @@ const MetadataManagement = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
               <div className="absolute top-1/2 left-0 right-0 h-[1px] border-t border-dashed border-accent hidden md:block"></div>
               {periods.map(p => (
-                <div key={p.id} className={`relative z-10 p-5 border rounded-lg transition-all hover:scale-105 hover:shadow-xl group ${p.active ? 'bg-primary text-white border-primary' : 'bg-white border-outline-variant'}`}>
-                  <span className={`font-mono text-[9px] font-bold uppercase tracking-widest ${p.active ? 'text-accent' : 'text-on-surface-variant'}`}>{p.range}</span>
-                  <h4 className="font-headline font-bold text-xl mt-1">{p.name}</h4>
-                  <p className={`text-[11px] mt-2 italic leading-relaxed line-clamp-2 ${p.active ? 'opacity-80' : 'text-on-surface-variant'}`}>{p.desc}</p>
-                  <div className="flex gap-2 mt-4 pt-4 border-t border-current transition-all">
-                    <button onClick={() => navigate(`/admin/metadata/periods/edit/${p.id}`)} className="material-symbols-outlined text-xs">edit</button>
-                    <button onClick={() => openDelete('thời kỳ', p)} className="material-symbols-outlined text-xs">delete</button>
+                <div key={p.id} className="relative z-10 p-5 border border-outline-variant bg-white rounded-lg transition-all hover:scale-105 hover:shadow-xl group shadow-sm">
+                  <div className="absolute top-2 right-2 flex gap-1">
+                    <button onClick={() => navigate(`/admin/metadata/periods/edit/${p.id}`)} className="p-1.5 rounded-full hover:bg-primary/10 text-primary transition-colors" title="Sửa">
+                      <span className="material-symbols-outlined text-sm">edit</span>
+                    </button>
+                    <button onClick={() => openDelete('thời kỳ', p)} className="p-1.5 rounded-full hover:bg-red-50 text-red-600 transition-colors" title="Xóa">
+                      <span className="material-symbols-outlined text-sm">delete</span>
+                    </button>
                   </div>
+                  <span className="font-mono text-[9px] font-bold uppercase tracking-widest text-on-surface-variant opacity-60">{p.range}</span>
+                  <h4 className="font-headline font-bold text-xl mt-1 text-on-surface">{p.name}</h4>
+                  <p className="text-[11px] mt-2 italic leading-relaxed line-clamp-2 text-on-surface-variant">{p.desc}</p>
                 </div>
               ))}
             </div>

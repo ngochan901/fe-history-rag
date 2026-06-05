@@ -16,7 +16,6 @@ const [imagePreview, setImagePreview] = useState(null);
     image: null
   });
 
-  // Giả lập load dữ liệu cũ khi ở chế độ Chỉnh sửa
   useEffect(() => {
     if (isEdit) {
       setForm({
@@ -36,10 +35,8 @@ const handleImageChange = (e) => {
   setImageFile(file);
   setImagePreview(URL.createObjectURL(file));
 
-  // nếu muốn lưu vào form luôn
   setForm({ ...form, image: file });
 };
-  // Hàm chuyển đổi Tiếng Việt có dấu thành Slug không dấu
   const generateSlug = (text) => {
     return text.toLowerCase()
       .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
@@ -59,7 +56,6 @@ const handleImageChange = (e) => {
     <div className="flex-grow bg-surface min-h-screen font-body pb-20">
       {/* 1. TOP ACTION BAR */}
 
-
       <main className="p-8 max-w-6xl mx-auto space-y-8">
 <div className="flex justify-between items-start gap-4">
   
@@ -77,9 +73,7 @@ const handleImageChange = (e) => {
   <div className="flex gap-3 items-center">
     <button
       onClick={() => navigate('/admin/metadata')}
-      className="px-5 py-2 border border-primary text-primary font-mono text-[10px] font-bold hover:bg-primary/5 transition-all uppercase"
-    >
-      HỦY BỎ
+      className="px-5 py-2 border border-primary text-primary font-mono text-[10px] font-bold hover:bg-primary/5 transition-all uppercase" > HỦY BỎ
     </button>
 
     <button
@@ -183,7 +177,7 @@ const handleImageChange = (e) => {
       add_a_photo
     </span>
 
-    {/* FILE INPUT (GIỐNG RECORD FORM) */}
+    {/* FILE INPUT */}
     <input
       type="file"
       accept="image/*"

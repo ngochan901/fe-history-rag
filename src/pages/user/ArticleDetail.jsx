@@ -33,7 +33,6 @@ const ArticleDetail = () => {
     authorRole: "Viện Nghiên cứu Kinh thành",
     authorImg: "https://lh3.googleusercontent.com/aida-public/AB6AXuCMHcdTOW_dxMtuwmxyW--OBFFCWbw1pKW6o872X-BC7wFqD-Aj2QfeGlztAlrOX6LWdwjTT3qIn-ieBA5v27gxwMY9PxkgRWcUWg3-PZSNcRwmQFJtnrt2XLelaJ-t0G8QB38Me2u3YcCyEowczw7cRzGYHPTpbEWpNN3lyEfrPrxyLX0mkEOCJT_be9zdImqCPMR-puG43GYWbpnqO15H5i6jecJLQ_FkJYy7KCRzb-57sQ7zfQnZ6ql98Ks24ceEcGRROhLPKDgY",
     publishedAt: "14 Tháng 10, 2023",
-    readingTime: "15 phút đọc",
     heroImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuAVaoTt7OmvfdX-z3YyqFqAX4Y1Ihkjvs5emJRmKGgOo_V6KXn2TDBUhtjxjWpdefmw2UYxcc_dGVKRTPpQx97q5bU8-ZHl88UUpDGcWY0yc0p91hGp4TLMwXj3Eo0X9m6jm4Ur6KjP6l6YR6Z-NPrix-C_2iLcQK89e0crl9yF_2yxjOETGgWJEiB_h6rEWBU-9uW1uLjoc5SpY7pGCmiyVL6pXDP1ZGb6DtJ2atbMIOtuGYVFZqRsdxH_-D9zlp5p05W4fuv1p9ft",
     imageCaption: "Phối cảnh 3D Điện Kính Thiên thời Lê Sơ dựa trên các hiện vật khảo cổ học tìm thấy tại khu di tích Hoàng thành Thăng Long.",
   };
@@ -102,11 +101,6 @@ const ArticleDetail = () => {
               <div className="flex flex-col">
                 <span className="text-on-surface-variant font-mono text-[9px] uppercase tracking-widest opacity-60">Ngày xuất bản</span>
                 <time className="font-bold text-xs">{article.publishedAt}</time>
-              </div>
-              <div className="hidden md:block h-8 w-px bg-outline-variant/30"></div>
-              <div className="flex flex-col">
-                <span className="text-on-surface-variant font-mono text-[9px] uppercase tracking-widest opacity-60">Thời lượng</span>
-                <span className="font-bold text-xs">{article.readingTime}</span>
               </div>
             </div>
           </header>
@@ -203,7 +197,7 @@ const ArticleDetail = () => {
                        </p>
                     </div>
 
-                    {/* NÚT XÓA BÌNH LUẬN (Hiện ra khi hover hoặc luôn hiện) */}
+                    {/* NÚT XÓA BÌNH LUẬN */}
                     <button 
                       onClick={() => handleDeleteComment(comment.id)}
                       className="absolute top-0 right-0 p-2 text-on-surface-variant opacity-0 group-hover:opacity-100 hover:text-red-600 transition-all"

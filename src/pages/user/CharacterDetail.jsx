@@ -4,7 +4,6 @@ import { useParams, Link } from 'react-router-dom';
 const CharacterDetail = () => {
   const { id } = useParams();
 
-  // Tự động cuộn lên đầu trang khi vào
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
@@ -84,7 +83,6 @@ const CharacterDetail = () => {
           <div className="max-w-4xl mx-auto relative border-l-2 border-primary/10 pl-10 space-y-16">
             {character.milestones.map((m, i) => (
               <div key={i} className="relative group">
-                {/* Nút tròn mốc thời gian */}
                 <div className={`absolute -left-[49px] top-0 w-4 h-4 rounded-full border-4 border-[#fcf9ee] z-10 transition-transform group-hover:scale-150 ${m.isSpecial ? 'bg-primary scale-125 shadow-lg' : 'bg-secondary'}`}></div>
                 
                 <div className={`${m.isSpecial ? 'p-8 bg-white border border-outline-variant shadow-xl rounded-lg' : ''}`}>
@@ -108,7 +106,7 @@ const CharacterDetail = () => {
                  {character.relatedFigures.map((fig, i) => (
                    <div key={i} className="text-center group cursor-pointer">
                       <div className="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-primary/10 group-hover:border-primary transition-all mb-4 shadow-lg">
-                         <img src={fig.img} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt={fig.name} />
+                        <img src={fig.img} className="w-full h-full object-cover transition-all duration-500" alt={fig.name} />
                       </div>
                       <h5 className="font-headline text-lg font-bold text-on-surface group-hover:text-primary transition-colors">{fig.name}</h5>
                       <p className="font-mono text-[9px] font-bold uppercase opacity-50 tracking-tighter mt-1">{fig.role}</p>
@@ -125,7 +123,7 @@ const CharacterDetail = () => {
                 Bia Vĩnh Lăng tại Lam Kinh là một trong những kiệt tác văn bia nghệ thuật thời Lê Sơ, tóm tắt cuộc đời và sự nghiệp vĩ đại của Thái Tổ.
               </p>
               <div className="mt-auto border border-white/20 p-2 relative z-10">
-                 <img src={character.steleImg} className="w-full aspect-square object-cover grayscale opacity-60 group-hover:opacity-100 transition-opacity duration-700" alt="Heritage" />
+                 <img src={character.steleImg} className="w-full aspect-square object-cover transition-opacity duration-700" alt="Heritage" />
                  <p className="font-mono text-[9px] font-bold uppercase text-center mt-4 tracking-[0.2em] text-accent">Lam Kinh, Thanh Hóa</p>
               </div>
            </div>
