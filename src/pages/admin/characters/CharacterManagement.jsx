@@ -56,8 +56,12 @@ const CharacterManagement = () => {
                 <td className="p-4 font-body text-center text-xs font-bold uppercase">{char.years}</td>
                 <td className="p-4 text-right">
                   <div className="flex justify-end gap-1">
-                    <button onClick={() => navigate(`/admin/characters/edit/${char.id}`)} className="p-2 hover:text-primary transition-colors"><span className="material-symbols-outlined text-sm">edit</span></button>
-                    <button onClick={() => setDeleteModal({ open: true, name: char.name })} className="p-2 hover:text-red-600 transition-colors"><span className="material-symbols-outlined text-sm">delete</span></button>
+                    <button onClick={() => navigate(`/admin/characters/edit/${char.id}`)} className="p-2 text-primary hover:bg-primary/10 rounded-full transition-colors" title="Chỉnh sửa">
+                      <span className="material-symbols-outlined text-lg">edit</span>
+                    </button>
+                    <button onClick={() => setDeleteModal({ open: true, name: char.name })} className="p-2 text-red-600 hover:bg-red-50 rounded-full transition-colors" title="Xóa bỏ">
+                      <span className="material-symbols-outlined text-lg">delete</span>
+                    </button>
                   </div>
                 </td>
               </tr>

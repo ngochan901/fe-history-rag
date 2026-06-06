@@ -86,8 +86,12 @@ const RecordManagement = () => {
                   <td className="p-4 font-medium">{item.dynasty}</td>
                   <td className="p-4 text-right">
                     <div className="flex justify-end gap-1">
-                      <button onClick={() => navigate(`/admin/records/edit/${item.id}`)} className="p-2 hover:text-primary"><span className="material-symbols-outlined text-sm">edit</span></button>
-                      <button onClick={() => setDeleteModal({ open: true, itemName: item.name, id: item.id })} className="p-2 hover:text-red-600"><span className="material-symbols-outlined text-sm">delete</span></button>
+                      <button onClick={() => navigate(`/admin/records/edit/${item.id}`)} className="p-2 text-primary hover:bg-primary/10 rounded-full transition-colors" title="Chỉnh sửa">
+                        <span className="material-symbols-outlined text-lg">edit</span>
+                      </button>
+                      <button onClick={() => setDeleteModal({ open: true, itemName: item.name, id: item.id })} className="p-2 text-red-600 hover:bg-red-50 rounded-full transition-colors" title="Xóa bỏ">
+                        <span className="material-symbols-outlined text-lg">delete</span>
+                      </button>
                     </div>
                   </td>
                 </tr>

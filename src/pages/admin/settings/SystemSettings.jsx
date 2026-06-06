@@ -50,6 +50,7 @@ const AddParamModal = ({ onClose }) => (
 // --- COMPONENT CHÍNH ---
 const SystemSettings = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [deleteModal, setDeleteModal] = useState({ open: false, key: '', value: '' });
 
   // Dữ liệu mẫu
   const parameters = [
@@ -107,9 +108,20 @@ const SystemSettings = () => {
                     <td className="p-4 font-medium text-on-surface">{p.value}</td>
                     <td className="p-4 text-on-surface-variant italic text-[11px] leading-relaxed">{p.desc}</td>
                     <td className="p-4 text-right">
-                      <button className="p-1 hover:text-primary text-on-surface-variant transition-all">
-  <span className="material-symbols-outlined text-sm">edit</span>
-</button>
+                      <div className="flex justify-end gap-1">
+                        <button 
+                          className="p-2 text-primary hover:bg-primary/10 rounded-full transition-colors" 
+                          title="Chỉnh sửa tham số">
+                          <span className="material-symbols-outlined text-lg">edit</span>
+                        </button>
+                        <button 
+                          className="p-2 text-red-600 hover:bg-red-50 rounded-full transition-colors" 
+                          title="Xóa tham số"
+                          onClick={() => setDeleteModal({ open: true, key: p.key, value: p.value })}
+                        >
+                          <span className="material-symbols-outlined text-lg">delete</span>
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -121,6 +133,41 @@ const SystemSettings = () => {
 
       {/* --- MODAL SYSTEM --- */}
       {isModalOpen && <AddParamModal onClose={() => setIsModalOpen(false)} />}
+      {/* --- POPUP XÁC NHẬN XÓA THAM SỐ --- */}
+      {deleteModal.open && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+          {/* Lớp nền mờ */}
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setDeleteModal({ ...deleteModal, open: false })}></div>
+          
+          {/* Nội dung Modal */}
+          <div className="relative bg-white w-full max-w-md rounded-xl shadow-2xl border-t-8 border-red-600 p-10 text-center animate-in fade-in zoom-in duration-300 font-body">
+            <div className="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6 text-red-600 border border-red-100">
+                <span className="material-symbols-outlined text-5xl" style={{ fontVariationSettings: "'FILL' 1" }}>delete_forever</span>
+            </div>
+            
+            <h3 className="font-headline text-2xl text-primary font-bold mb-3 italic uppercase tracking-tighter">Gỡ bỏ tham số?</h3>
+            
+            <p className="text-sm text-on-surface-variant mb-10 leading-relaxed italic">
+                Hành động này sẽ xóa vĩnh viễn khóa hệ thống <br/>
+                <strong className="text-on-surface not-italic font-mono bg-surface-low px-2 py-0.5 border border-outline-variant">"{deleteModal.key}"</strong> <br/>
+                khỏi cơ sở dữ liệu Sử Việt.
+            </p>
+            
+            <div className="flex gap-4 font-mono text-[11px] font-bold tracking-widest">
+                <button 
+                  onClick={() => setDeleteModal({ ...deleteModal, open: false })} 
+                  className="flex-1 py-4 border border-outline rounded-lg hover:bg-surface-low transition-all uppercase"
+                > Hủy bỏ
+                </button>
+                <button 
+                  onClick={() => { alert('Đã xóa tham số: ' + deleteModal.key); setDeleteModal({ ...deleteModal, open: false }); }}
+                  className="flex-1 py-4 bg-red-600 text-white rounded-lg shadow-lg hover:bg-red-700 transition-all uppercase"
+                > Xác nhận xóa
+                </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

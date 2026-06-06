@@ -6,7 +6,6 @@ const RecordForm = () => {
   const navigate = useNavigate();
   const isEdit = !!id;
 
-  // Khai báo các Refs cho Editor
   const editorRef = useRef(null);
   const editorImageInputRef = useRef(null);
   const fileInputRef = useRef(null);
@@ -27,7 +26,6 @@ const RecordForm = () => {
         summary: 'Bộ quốc sử chính thức lớn nhất của Việt Nam thời trung đại...',
         content: mockContent
       });
-      // Đổ nội dung vào editor khi ở chế độ edit
       if (editorRef.current) editorRef.current.innerHTML = mockContent;
     }
   }, [id, isEdit]);
@@ -99,7 +97,6 @@ const RecordForm = () => {
               </div>
             </section>
 
-            {/* TRÌNH SOẠN THẢO VĂN BẢN ĐÃ SỬA LỖI */}
             <section className="bg-white border border-outline-variant shadow-sm min-h-[700px] flex flex-col rounded-sm">
               <div className="flex items-center gap-1 p-2 border-b border-outline-variant bg-surface-low/30 sticky top-0 z-10">
                 <EditorBtn onClick={() => runCommand('bold')} label="B" />
@@ -164,7 +161,7 @@ const RecordForm = () => {
                 </select>
              </div>
           </div>
-        </div> {/* Đã thêm thẻ đóng div còn thiếu ở đây */}
+        </div> 
       </main>
     </div>
   );

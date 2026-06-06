@@ -71,10 +71,18 @@ const MemberManagement = () => {
                   <td className="p-4 font-body text-xs text-on-surface-variant">{member.joinDate}</td>
                   <td className="p-4 text-right">
                     <div className="flex justify-end gap-1">
-                      <button onClick={() => setActiveModal({ type: 'view', data: member })} className="p-2 hover:bg-primary/5 rounded" title="Xem nhanh"><span className="material-symbols-outlined text-sm">visibility</span></button>
-                      <button onClick={() => setActiveModal({ type: 'role', data: member })} className="p-2 hover:bg-primary/5 rounded" title="Phân quyền"><span className="material-symbols-outlined text-sm">manage_accounts</span></button>
-                      <button onClick={() => navigate(`/admin/members/edit/${member.id}`)} className="p-2 hover:bg-primary/5 rounded" title="Sửa"><span className="material-symbols-outlined text-sm">edit</span></button>
-                      <button onClick={() => setActiveModal({ type: 'lock', data: member })} className="p-2 hover:bg-red-50 text-red-600 rounded" title="Khóa"><span className="material-symbols-outlined text-sm">block</span></button>
+                      <button onClick={() => setActiveModal({ type: 'view', data: member })} className="p-2 text-blue-600 hover:bg-blue-50 rounded-full transition-colors" title="Xem nhanh">
+                        <span className="material-symbols-outlined text-lg">visibility</span>
+                      </button>
+                      <button onClick={() => setActiveModal({ type: 'role', data: member })} className="p-2 text-amber-600 hover:bg-amber-50 rounded-full transition-colors" title="Phân quyền">
+                        <span className="material-symbols-outlined text-lg">manage_accounts</span>
+                      </button>
+                      <button onClick={() => navigate(`/admin/members/edit/${member.id}`)} className="p-2 text-primary hover:bg-primary/10 rounded-full transition-colors" title="Sửa">
+                        <span className="material-symbols-outlined text-lg">edit</span>
+                      </button>
+                      <button onClick={() => setActiveModal({ type: 'lock', data: member })} className="p-2 text-red-600 hover:bg-red-50 rounded-full transition-colors" title="Khóa">
+                        <span className="material-symbols-outlined text-lg">block</span>
+                      </button>
                     </div>
                   </td>
                 </tr>

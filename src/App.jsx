@@ -25,6 +25,7 @@ import UserPosts from './pages/user/articles/UserPosts';
 import LocationDetail from './pages/user/locations/LocationDetail';
 import HistoricalMap from './pages/user/locations/HistoricalMap';
 import UserProfile from './pages/user/profile/UserProfile';
+import TermsAndPrivacy from './pages/user/TermsAndPrivacy';
 
 // --- NHÓM TRANG QUẢN TRỊ (ADMIN) ---
 // Dashboard
@@ -94,6 +95,7 @@ function App() {
           <Route path="locations/:id" element={<LocationDetail />} />
           <Route path="map" element={<HistoricalMap />} /> 
           <Route path="profile" element={<UserProfile />} />
+          <Route path="terms" element={<TermsAndPrivacy />} />
 
         </Route>
 

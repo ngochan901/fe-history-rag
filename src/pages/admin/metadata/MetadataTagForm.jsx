@@ -6,6 +6,8 @@ const MetadataTagForm = () => {
   const { id } = useParams();
   const [tagName, setTagName] = useState(id ? 'Nhà Trần' : '');
   const [category, setCategory] = useState('dynasty');
+  const [description, setDescription] = useState('');
+  const [status, setStatus] = useState('published');
 
   const categories = [
     { id: 'dynasty', label: 'Triều đại', icon: 'castle', color: 'bg-primary' },
@@ -19,7 +21,7 @@ return (
 
     <main className="p-8 max-w-6xl mx-auto grid grid-cols-12 gap-8">
 
-      {/* TITLE + ACTIONS (MỚI) */}
+      {/* TITLE + ACTIONS */}
       <div className="col-span-12 flex justify-between items-start border-b border-outline-variant pb-6 mb-6">
         
         <div className="space-y-1">
@@ -31,27 +33,12 @@ return (
           </p>
         </div>
 
-        {/* ACTION BUTTONS (ĐƯA XUỐNG BODY) */}
+        {/* ACTION BUTTONS  */}
         <div className="flex gap-3">
-          <button
-            onClick={() => navigate('/admin/metadata')}
-            className="px-5 py-2 border border-primary text-primary font-body text-[10px] font-bold hover:bg-primary/5 transition-all uppercase"
-          >
-            HỦY BỎ
-          </button>
-
-          <button
-            onClick={() => {
-              alert('Đã lưu!');
-              navigate('/admin/metadata');
-            }}
-            className="px-6 py-2 bg-primary text-white font-body text-[10px] font-bold shadow-lg hover:bg-primary-container flex items-center gap-2 transition-all uppercase"
-          >
-            <span className="material-symbols-outlined text-sm">save</span>
-            LƯU THẺ
-          </button>
+          <button onClick={() => navigate('/admin/metadata')} className="px-5 py-2 border border-primary text-primary font-mono text-[10px] font-bold hover:bg-primary/5 transition-all uppercase flex items-center justify-center"> HỦY BỎ </button>
+          <button onClick={() => { alert('Đã lưu!'); navigate('/admin/metadata'); }} className="px-8 py-2.5 bg-primary text-white font-mono text-[10px] font-bold shadow-lg hover:bg-primary-container flex items-center justify-center gap-2 transition-all active:scale-95 uppercase min-w-[160px]" >
+            <span className="material-symbols-outlined text-sm">save</span> LƯU THẺ </button>
         </div>
-
       </div>
 
       {/* LEFT */}
@@ -64,7 +51,7 @@ return (
 
           <div className="space-y-4">
             <div className="flex flex-col gap-1">
-              <label className="font-body text-[10px] font-bold uppercase opacity-60">
+              <label className="font-mono text-[10px] font-bold uppercase opacity-60">
                 Tên thẻ hệ thống *
               </label>
               <input
@@ -77,20 +64,16 @@ return (
             </div>
 
             <div className="flex flex-col gap-1">
-              <label className="font-body text-[10px] font-bold uppercase opacity-60">
+              <label className="font-mono text-[10px] font-bold uppercase opacity-60">
                 Mô tả ghi chú
               </label>
-              <textarea
-                rows="4"
-                className="w-full bg-surface-low border border-outline-variant p-4 rounded text-sm italic"
-                placeholder="Mô tả bối cảnh lịch sử của thẻ này..."
-              />
+              <textarea rows="4" value={description} onChange={(e) => setDescription(e.target.value)} className="w-full bg-surface-low border border-outline-variant p-4 rounded text-sm italic outline-none focus:ring-1 focus:ring-primary/30" placeholder="Mô tả bối cảnh lịch sử của thẻ này..."/>
             </div>
           </div>
         </section>
 
         <section className="bg-white p-8 border border-outline-variant rounded-xl shadow-sm">
-          <h3 className="font-body text-[10px] font-bold uppercase opacity-60 mb-6">
+          <h3 className="font-mono text-[10px] font-bold uppercase opacity-60 mb-6">
             Phân loại loại hình
           </h3>
 
@@ -115,7 +98,7 @@ return (
                   <span className="material-symbols-outlined">
                     {cat.icon}
                   </span>
-                  <span className="font-body text-[9px] font-bold uppercase">
+                  <span className="font-mono text-[9px] font-bold uppercase">
                     {cat.label}
                   </span>
                 </div>
@@ -128,9 +111,20 @@ return (
 
       {/* RIGHT PREVIEW */}
       <aside className="col-span-12 lg:col-span-4">
+        <div className="bg-primary/90 text-white p-6 shadow-xl rounded-sm mb-6">
+        <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest border-b border-white/20 pb-2 mb-4 italic">Cấu hình hiển thị</h4>
+        <div className="flex flex-col gap-2 text-left">
+          <label className="text-[10px] font-bold uppercase opacity-70">Trạng thái thẻ</label>
+          <select value={status}  onChange={(e) => setStatus(e.target.value)} className="w-full bg-white/10 border border-white/20 rounded p-2 text-sm outline-none focus:bg-white/20 cursor-pointer">
+            <option value="published" className="text-black">Công khai</option>
+            <option value="draft" className="text-black">Bản nháp</option>
+          </select>
+        </div>
+      </div>
+
         <div className="bg-white border-2 border-primary/20 p-8 rounded-xl shadow-2xl sticky top-24 text-center space-y-6">
 
-          <p className="font-body text-[10px] font-bold uppercase tracking-widest opacity-40">
+          <p className="font-mono text-[10px] font-bold uppercase tracking-widest opacity-40">
             Xem trước thẻ
           </p>
 
