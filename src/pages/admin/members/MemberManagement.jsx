@@ -43,7 +43,7 @@ const MemberManagement = () => {
         {/* 4. MEMBER TABLE */}
         <div className="bg-white border border-outline-variant rounded-xl overflow-hidden shadow-sm">
           <table className="w-full text-left border-collapse">
-            <thead className="bg-surface-low border-b border-outline-variant font-mono text-[10px] uppercase text-on-surface-variant">
+            <thead className="bg-surface-low border-b border-outline-variant font-body text-[10px] uppercase text-on-surface-variant">
               <tr>
                 <th className="p-4">Thành viên / ID</th>
                 <th className="p-4">Trạng thái</th>
@@ -68,7 +68,7 @@ const MemberManagement = () => {
                       {member.status === 'active' ? 'Hoạt động' : 'Đã khóa'}
                     </span>
                   </td>
-                  <td className="p-4 font-mono text-xs text-on-surface-variant">{member.joinDate}</td>
+                  <td className="p-4 font-body text-xs text-on-surface-variant">{member.joinDate}</td>
                   <td className="p-4 text-right">
                     <div className="flex justify-end gap-1">
                       <button onClick={() => setActiveModal({ type: 'view', data: member })} className="p-2 text-blue-600 hover:bg-blue-50 rounded-full transition-colors" title="Xem nhanh">
@@ -108,7 +108,7 @@ const StatBox = ({ label, value, sub, icon }) => (
       <span className="material-symbols-outlined text-2xl">{icon}</span>
     </div>
     <div>
-       <p className="font-mono text-[9px] uppercase font-bold text-on-surface-variant tracking-widest">{label}</p>
+       <p className="font-body text-[9px] uppercase font-bold text-on-surface-variant tracking-widest">{label}</p>
        <h3 className="font-headline text-3xl font-bold text-primary leading-tight">{value}</h3>
        <p className="text-[10px] text-green-700 font-bold">{sub}</p>
     </div>
@@ -124,7 +124,7 @@ const QuickViewModal = ({ data, onClose }) => (
              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT7Eun6P5a5j9t0Ha7agNr8GmSebCaslKHDba0sUNVH_N_52BCgWQcOKpY3iGdks_qyGhVU9048F4D1LkVsKeVN8s86BCO5TAJj2l2o0ArnWCoqDZUUXPpxZtesKwdi4JGNu3X0EoPzZlT5dgkxjU2GawsCkoLCy0vjYeOP9QSq4zU8gkPiKcSHBLMoIpgNFgNSgWSv3gTB1Y-zSwP7wGtCvPoQOwj3iJp8fRj35VGrIerPL8IypAGaB5cuukoelC1JFRbLwD1CWY" alt="avatar" />
           </div>
           <h3 className="font-headline text-2xl font-bold">{data.name}</h3>
-          <p className="text-[10px] font-mono opacity-60 uppercase mt-1 tracking-widest">{data.role}</p>
+          <p className="text-[10px] font-body opacity-60 uppercase mt-1 tracking-widest">{data.role}</p>
           <div className="mt-8 space-y-3 text-[11px] w-full text-left opacity-80 border-t border-white/20 pt-6">
              <div className="flex justify-between"><span>Gia nhập:</span><span>{data.joinDate}</span></div>
              <div className="flex justify-between"><span>Cấp bậc:</span><span className="text-accent font-bold">Hàn Lâm Sĩ</span></div>
@@ -137,7 +137,7 @@ const QuickViewModal = ({ data, onClose }) => (
              {[1, 2, 3].map(i => (
                <div key={i} className="bg-white p-4 rounded border border-outline-variant/30 text-xs italic leading-relaxed text-on-surface-variant">
                   "Đã đóng góp hiệu đính cho sử liệu Chiến thắng Ngọc Hồi..."
-                  <span className="block mt-2 font-mono text-[9px] not-italic opacity-50 uppercase tracking-widest">2 giờ trước</span>
+                  <span className="block mt-2 font-body text-[9px] not-italic opacity-50 uppercase tracking-widest">2 giờ trước</span>
                </div>
              ))}
           </div>
@@ -154,7 +154,7 @@ const LockConfirmModal = ({ data, onClose }) => (
         <h3 className="font-headline text-2xl font-bold text-primary mb-2 italic">Khóa tài khoản?</h3>
         <p className="text-sm text-on-surface-variant mb-6 font-body leading-relaxed">Xác nhận đình chỉ quyền truy cập của <br/><strong>"{data.name}"</strong> vào hệ thống Sử Việt?</p>
         <textarea className="w-full bg-surface-low border border-outline-variant p-3 text-xs mb-6 rounded outline-none focus:ring-1 focus:ring-red-600" placeholder="Nhập lý do khóa..." />
-        <div className="flex gap-3 font-mono text-[11px] font-bold">
+        <div className="flex gap-3 font-body text-[11px] font-bold">
            <button onClick={onClose} className="flex-1 py-3 border border-outline rounded-lg hover:bg-surface-low">HỦY BỎ</button>
            <button onClick={() => {alert('Đã khóa'); onClose()}} className="flex-1 py-3 bg-red-600 text-white rounded-lg shadow-md">XÁC NHẬN KHÓA</button>
         </div>

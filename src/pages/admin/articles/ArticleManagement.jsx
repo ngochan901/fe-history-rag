@@ -42,7 +42,7 @@ const ArticleManagement = () => {
       {/* 3. BẢNG DANH SÁCH */}
       <div className="bg-white border border-outline-variant rounded-xl overflow-hidden shadow-sm">
         <table className="w-full text-left border-collapse">
-          <thead className="bg-surface-variant/50 border-b border-outline-variant font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">
+          <thead className="bg-surface-variant/50 border-b border-outline-variant font-body text-[10px] uppercase tracking-widest text-on-surface-variant">
             <tr>
               <th className="p-4">Sử liệu / Mã số</th>
               <th className="p-4">Thời kỳ</th>
@@ -56,12 +56,12 @@ const ArticleManagement = () => {
                 <td className="p-4">
                   <div className="flex flex-col">
                     <span className="font-headline text-primary font-semibold text-lg hover:underline cursor-pointer">{item.title}</span>
-                    <code className="font-mono text-[10px] text-on-surface-variant mt-1 italic opacity-60">slug: {item.slug}</code>
+                    <code className="font-body text-[10px] text-on-surface-variant mt-1 italic opacity-60">slug: {item.slug}</code>
                   </div>
                 </td>
                 <td className="p-4 text-on-surface-variant font-body">
                   {item.period}
-                  <p className="text-[10px] opacity-50 font-mono mt-0.5 uppercase tracking-tighter">Tác giả: {item.author}</p>
+                  <p className="text-[10px] opacity-50 font-body mt-0.5 uppercase tracking-tighter">Tác giả: {item.author}</p>
                 </td>
                 <td className="p-4 text-center">
                   <StatusBadge status={item.status} />
@@ -101,7 +101,7 @@ const ArticleManagement = () => {
 const StatBox = ({ label, value, sub, icon, colorClass = "text-primary" }) => (
   <div className="bg-white border border-outline-variant p-6 rounded-xl shadow-sm flex items-center justify-between hover:-translate-y-1 transition-all">
     <div>
-      <p className="font-mono text-[9px] uppercase font-bold text-on-surface-variant tracking-widest">{label}</p>
+      <p className="font-body text-[9px] uppercase font-bold text-on-surface-variant tracking-widest">{label}</p>
       <h3 className={`font-headline text-3xl font-bold mt-1 ${colorClass}`}>{value}</h3>
       {sub && <p className="text-[10px] text-green-700 font-bold">{sub}</p>}
     </div>
@@ -136,7 +136,7 @@ const ActionModal = ({ isOpen, type, item, onClose, onConfirm }) => {
             Bạn có chắc chắn muốn {isDelete ? 'xóa' : 'lưu trữ'} bài viết <br/>
             <strong className="text-primary italic">"{item?.title}"</strong>?
           </p>
-          <div className="flex gap-4 font-mono text-[11px] font-bold">
+          <div className="flex gap-4 font-body text-[11px] font-bold">
             <button onClick={onClose} className="flex-1 py-3 border border-outline rounded-lg hover:bg-surface-low transition-all">HỦY BỎ</button>
             <button onClick={onConfirm} className={`flex-1 py-3 text-white rounded-lg shadow-md transition-all ${isDelete ? 'bg-red-600 hover:bg-red-700' : 'bg-primary hover:bg-primary-container'}`}>XÁC NHẬN</button>
           </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Outlet, NavLink, useNavigate, useLocation, Link } from 'react-router-dom';
 import LogoutModal from './LogoutModal';
 
@@ -7,16 +7,28 @@ const AdminLayout = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  useEffect(() => {
+    const savedUser = localStorage.getItem("user");
+    if (!savedUser) {
+      navigate('/login');
+    } else {
+      const user = JSON.parse(savedUser);
+      if (user.role !== 'admin') {
+        navigate('/');
+      }
+    }
+  }, [navigate]);
+
   const menuItems = [
     { icon: 'dashboard', label: 'Tổng quan', path: '/admin' },
     { icon: 'description', label: 'Bài viết', path: '/admin/articles' },
     { icon: 'event_note', label: 'Sự kiện', path: '/admin/events' },
     { icon: 'person', label: 'Nhân vật', path: '/admin/characters' },
     { icon: 'map', label: 'Địa danh', path: '/admin/locations' },
-    { icon: 'auto_stories', label: 'Sử liệu', path: '/admin/records' },
+    // { icon: 'auto_stories', label: 'Sử liệu', path: '/admin/records' },
     { icon: 'database', label: 'Siêu dữ liệu', path: '/admin/metadata' },
     { icon: 'hub', label: 'Mối quan hệ', path: '/admin/hub' },
-    { icon: 'smart_toy', label: 'Quản trị AI', path: '/admin/ai' },
+    // { icon: 'smart_toy', label: 'Quản trị AI', path: '/admin/ai' },
     { icon: 'group', label: 'Thành viên', path: '/admin/members' },
   ];
 
@@ -48,7 +60,7 @@ const AdminLayout = () => {
         <div className="mt-auto pt-4 border-t border-white/10 px-3 space-y-1">
           <NavLink to="/admin/settings" className={({ isActive }) => `flex items-center gap-4 px-4 py-3 rounded-lg ${isActive ? 'bg-white/10 text-white font-bold' : 'text-white/60 hover:text-white'}`}>
             <span className="material-symbols-outlined text-[22px]">settings</span>
-            <span className="text-sm">Cài đặt</span>
+            <span className="text-sm font-body">Cài đặt</span>
           </NavLink>
           <button onClick={() => setIsLogoutOpen(true)} className="w-full flex items-center gap-4 px-4 py-3 text-white/60 hover:text-red-400 transition-colors">
             <span className="material-symbols-outlined text-[22px]">logout</span>
@@ -59,7 +71,7 @@ const AdminLayout = () => {
 
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         <header className="h-14 bg-white/80 backdrop-blur-md border-b border-outline-variant flex items-center px-8 z-40">
-          <nav className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">
+          <nav className="flex items-center gap-2 font-body text-[10px] uppercase tracking-widest text-on-surface-variant">
             <Link to="/admin" className="hover:text-primary flex items-center gap-1"><span className="material-symbols-outlined text-sm">home</span> HOME</Link>
             {location.pathname.split('/').filter(x => x && x !== 'admin').map((path, index, array) => (
               <React.Fragment key={path}>

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -10,10 +11,9 @@
   --color-surface-variant: #ebe2cd;
   --color-outline-variant: #ddc0bd;
 
-  /* Font chữ */
-  --font-headline: "Playfair Display", serif;
-  --font-body: "Manrope", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  /* Font chữ chuẩn hóa */
+  --font-headline: "Cormorant Garamond", serif;
+  --font-body: "Inter", sans-serif;
 }
 
 @layer base {
@@ -21,6 +21,19 @@
     @apply bg-surface font-body text-[#1f1b0e] min-h-screen;
     background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
   }
+}
+
+@keyframes kenburns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.15) translate(-1%, -1%);
+  }
+}
+
+.animate-ken-burns {
+  animation: kenburns 25s ease-in-out infinite alternate;
 }
 
 @layer components {

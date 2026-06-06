@@ -111,12 +111,12 @@ export default function HistoricalMap() {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
             <Compass className="w-8 h-8 text-primary animate-spin-slow" />
-            <span className="font-mono text-xs tracking-[0.4em] uppercase font-bold text-primary">Địa Đồ Di Sản</span>
+            <span className="font-body text-xs tracking-[0.4em] uppercase font-bold text-primary">Địa Đồ Di Sản</span>
           </div>
           <h2 className="font-headline text-5xl md:text-6xl text-primary font-bold italic tracking-tight mb-8">Cương Vực Quốc Đồ</h2>
           
           {/* Filters */}
-          <div className="flex flex-wrap justify-center gap-4 font-mono text-[10px] font-bold">
+          <div className="flex flex-wrap justify-center gap-4 font-body text-[10px] font-bold">
             {[
               { id: 'all', label: 'Vạn Lý Sơn Hà', icon: <Compass size={14}/> },
               { id: 'battleground', label: 'Chiến Trường', icon: <Swords size={14}/> },
@@ -152,8 +152,8 @@ export default function HistoricalMap() {
                     d="M 230 40 Q 280 40 310 50 T 310 100 T 260 140 T 320 200 T 380 280 T 340 360 T 325 430 T 250 490 T 200 520 T 170 550 T 220 570 T 200 620"
                     fill="none" stroke="#6B1515" strokeWidth="2" strokeDasharray="8,8" className="animate-pulse"
                   />
-                  <text x="340" y="470" fill="#6B1515" fontSize="10" fontWeight="bold" className="font-mono opacity-30 tracking-[0.3em]">BIỂN ĐÔNG VẠN DẶM</text>
-                  <text x="50" y="600" fill="#6B1515" fontSize="8" className="font-mono opacity-20 italic">Vịnh Thái Lan</text>
+                  <text x="340" y="470" fill="#6B1515" fontSize="10" fontWeight="bold" className="font-body opacity-30 tracking-[0.3em]">BIỂN ĐÔNG VẠN DẶM</text>
+                  <text x="50" y="600" fill="#6B1515" fontSize="8" className="font-body opacity-20 italic">Vịnh Thái Lan</text>
                </svg>
 
                {/* Hiển thị các điểm kỳ tiêu (Markers) */}
@@ -191,7 +191,7 @@ export default function HistoricalMap() {
                })}
             </div>
 
-            <div className="mt-8 flex justify-between items-center text-[9px] font-mono font-bold text-primary/40 uppercase tracking-widest">
+            <div className="mt-8 flex justify-between items-center text-[9px] font-body font-bold text-primary/40 uppercase tracking-widest">
                <span>* Chạm vào điểm mốc để diện kiến sử xanh</span>
                <span>Hằng Đồ Nước Việt</span>
             </div>
@@ -213,13 +213,13 @@ export default function HistoricalMap() {
                     <div className="space-y-1">
                        <div className="flex items-center gap-2 bg-primary/5 w-fit px-2 py-0.5 rounded border border-primary/10">
                           {selectedSite.type === 'battleground' ? <Swords size={12} className="text-primary"/> : <MapPin size={12} className="text-accent"/>}
-                          <span className="font-mono text-[9px] font-bold text-primary uppercase tracking-widest">
+                          <span className="font-body text-[9px] font-bold text-primary uppercase tracking-widest">
                             {selectedSite.type === 'battleground' ? 'Chiến Trường' : 'Di Tích'}
                           </span>
                        </div>
                        <h3 className="font-headline text-4xl text-primary font-bold italic leading-tight">{selectedSite.title}</h3>
                     </div>
-                    <div className="font-mono text-[10px] font-bold text-accent italic bg-[#fcf9ee] px-3 py-1 border border-outline-variant shadow-sm">
+                    <div className="font-body text-[10px] font-bold text-accent italic bg-[#fcf9ee] px-3 py-1 border border-outline-variant shadow-sm">
                        {selectedSite.location}
                     </div>
                   </div>
@@ -238,7 +238,7 @@ export default function HistoricalMap() {
                   {/* Các nhân vật liên quan */}
                   {selectedSite.famousCharacters && (
                     <div className="mb-10">
-                       <p className="font-mono text-[9px] font-bold text-secondary uppercase tracking-widest mb-4 flex items-center gap-2">
+                       <p className="font-body text-[9px] font-bold text-secondary uppercase tracking-widest mb-4 flex items-center gap-2">
                           <Feather size={12} /> Anh hùng liên quan
                        </p>
                        <div className="flex flex-wrap gap-2">
@@ -260,7 +260,7 @@ export default function HistoricalMap() {
                     
                     <button 
                       onClick={() => navigate('/ai-chat')}
-                      className="w-full py-3 border-2 border-primary text-primary font-mono text-[10px] font-bold uppercase tracking-widest hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
+                      className="w-full py-3 border-2 border-primary text-primary font-body text-[10px] font-bold uppercase tracking-widest hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
                     >
                       <Sparkles size={14} className="text-accent animate-pulse" /> HỎI SỬ QUAN AI VỀ ĐỊA DANH NÀY
                     </button>

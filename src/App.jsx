@@ -9,21 +9,22 @@ import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 
 // --- NHÓM TRANG NGƯỜI DÙNG (USER) ---
-import Home from './pages/user/Home';
-import UserPeriods from './pages/user/UserPeriods';
-import PeriodDetail from './pages/user/PeriodDetail';
-import UserEvents from './pages/user/UserEvents';
-import EventDetail from './pages/user/EventDetail';
-import UserCharacters from './pages/user/UserCharacters';
-import CharacterDetail from './pages/user/CharacterDetail';
-import UserLocations from './pages/user/UserLocations';
-import UserRecords from './pages/user/UserRecords';
-import RecordDetail from './pages/user/RecordDetail';
-import AIChat from './pages/user/AIChat';
-import ArticleDetail from './pages/user/ArticleDetail';
-import UserPosts from './pages/user/UserPosts'; 
-import LocationDetail from './pages/user/LocationDetail';
-import HistoricalMap from './pages/user/HistoricalMap';
+import Home from './pages/user/home/Home';
+import UserPeriods from './pages/user/periods/UserPeriods';
+import PeriodDetail from './pages/user/periods/PeriodDetail';
+import UserEvents from './pages/user/events/UserEvents';
+import EventDetail from './pages/user/events/EventDetail';
+import UserCharacters from './pages/user/characters/UserCharacters';
+import CharacterDetail from './pages/user/characters/CharacterDetail';
+import UserLocations from './pages/user/locations/UserLocations';
+import UserRecords from './pages/user/records/UserRecords';
+import RecordDetail from './pages/user/records/RecordDetail';
+import AIChat from './pages/user/ai/AIChat';
+import ArticleDetail from './pages/user/articles/ArticleDetail';
+import UserPosts from './pages/user/articles/UserPosts'; 
+import LocationDetail from './pages/user/locations/LocationDetail';
+import HistoricalMap from './pages/user/locations/HistoricalMap';
+import UserProfile from './pages/user/profile/UserProfile';
 import TermsAndPrivacy from './pages/user/TermsAndPrivacy';
 
 // --- NHÓM TRANG QUẢN TRỊ (ADMIN) ---
@@ -93,6 +94,7 @@ function App() {
           <Route path="ai-chat" element={<AIChat />} />
           <Route path="locations/:id" element={<LocationDetail />} />
           <Route path="map" element={<HistoricalMap />} /> 
+          <Route path="profile" element={<UserProfile />} />
           <Route path="terms" element={<TermsAndPrivacy />} />
 
         </Route>

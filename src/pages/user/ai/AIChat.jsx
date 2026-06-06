@@ -58,7 +58,7 @@ const AIChat = () => {
           </div>
           <div className="p-6 border border-outline-variant/30 rounded-xl relative overflow-hidden group bg-white/40">
              <div className="absolute inset-0 dong-son-pattern opacity-5"></div>
-             <h4 className="font-mono text-[10px] font-bold text-secondary uppercase mb-2 relative z-10">Mẹo nghiên cứu</h4>
+             <h4 className="font-body text-[10px] font-bold text-secondary uppercase mb-2 relative z-10">Mẹo nghiên cứu</h4>
              <p className="text-xs text-on-surface-variant italic relative z-10 leading-relaxed">
                "Hãy đặt câu hỏi về các sự kiện cụ thể để AI trích dẫn chính xác các đoạn trong Đại Việt Sử Ký Toàn Thư."
              </p>
@@ -75,7 +75,7 @@ const AIChat = () => {
               </div>
               <div>
                 <p className="font-headline font-bold text-primary italic leading-none">Sử Quan AI</p>
-                <span className="text-[10px] font-mono text-green-600 font-bold uppercase flex items-center gap-1 mt-1">
+                <span className="text-[10px] font-body text-green-600 font-bold uppercase flex items-center gap-1 mt-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Thư viện trực tuyến
                 </span>
               </div>
@@ -104,7 +104,7 @@ const AIChat = () => {
                   {/* Sources display for AI */}
                   {msg.sources.length > 0 && (
                     <div className="space-y-2">
-                       <p className="font-mono text-[9px] font-bold text-secondary uppercase tracking-widest flex items-center gap-1">
+                       <p className="font-body text-[9px] font-bold text-secondary uppercase tracking-widest flex items-center gap-1">
                          <span className="material-symbols-outlined text-xs">link</span> Trích dẫn nguồn
                        </p>
                        <div className="grid grid-cols-1 gap-2">
@@ -138,7 +138,7 @@ const AIChat = () => {
                   <span className="material-symbols-outlined">send</span>
                 </button>
              </div>
-             <div className="mt-3 flex justify-center gap-6 font-mono text-[9px] font-bold text-on-surface-variant opacity-60 uppercase tracking-tighter">
+             <div className="mt-3 flex justify-center gap-6 font-body text-[9px] font-bold text-on-surface-variant opacity-60 uppercase tracking-tighter">
                 <span># Nhà Hậu Lê</span>
                 <span># Trận Bạch Đằng</span>
                 <span># Chiếu Dời Đô</span>
@@ -149,21 +149,21 @@ const AIChat = () => {
         {/* 4. CỘT PHẢI: THỰC THỂ LIÊN QUAN */}
         <aside className="hidden lg:col-span-3 lg:flex flex-col gap-6">
           <div className="p-6 bg-white border border-outline-variant/20 rounded-xl relative overflow-hidden shadow-sm">
-             <h3 className="font-mono text-[10px] font-bold text-secondary uppercase tracking-widest mb-6">Thực thể liên quan</h3>
+             <h3 className="font-body text-[10px] font-bold text-secondary uppercase tracking-widest mb-6">Thực thể liên quan</h3>
              <div className="space-y-6">
                 <EntityItem 
                   name="Lý Thường Kiệt" type="Nhân vật" 
                   desc="Thái úy triều Lý, danh tướng lừng lẫy phòng tuyến sông Như Nguyệt."
                   img="https://lh3.googleusercontent.com/aida-public/AB6AXuBXLbkFqj-insp0Ywy8bF_fVUuZ67qvyvjRAfWo7w1iKuhghv8n0rYBxfEdRAY4aib4mh7rde3JgELR5JXKp3cGMaRjeCxeUb6g3ojhnFsZ5WnZul23ymRLAXAr4sh3CqkKXZz3SmImreYEbG-r4wAxbSHkx6lO9jqQ9K52SYWCjWO9bmXaal066YFxd0DrXQNWzQ5PZiSvR_uYc2Rms-ZCahCqqVGdjXGVfyVSF6a8qypNfChSdB3nPsN1yPj6fRpIJbohlTl2CPyA"
                 />
-                <button className="w-full py-2 border-2 border-dashed border-primary/20 text-primary rounded-lg font-mono text-[9px] font-bold uppercase tracking-widest hover:bg-primary/5 transition-all flex items-center justify-center gap-2">
+                <button className="w-full py-2 border-2 border-dashed border-primary/20 text-primary rounded-lg font-body text-[9px] font-bold uppercase tracking-widest hover:bg-primary/5 transition-all flex items-center justify-center gap-2">
                    <span className="material-symbols-outlined text-sm">hub</span> Mở bản đồ tri thức
                 </button>
              </div>
           </div>
 
           <div className="flex-1 p-6 border border-outline-variant/20 rounded-xl bg-surface-variant/10">
-             <h4 className="font-mono text-[9px] font-bold uppercase text-on-surface-variant mb-4">Lịch sử hội thoại</h4>
+             <h4 className="font-body text-[9px] font-bold uppercase text-on-surface-variant mb-4">Lịch sử hội thoại</h4>
              <div className="space-y-4 font-body text-xs italic text-on-surface-variant">
                 <p className="hover:text-primary cursor-pointer transition-colors leading-relaxed">"Nguyên nhân vua Lý dời đô..."</p>
                 <p className="hover:text-primary cursor-pointer transition-colors leading-relaxed">"Tổ chức quân đội thời Trần..."</p>
@@ -185,7 +185,7 @@ const EntityItem = ({ name, type, desc, img }) => (
       </div>
       <div>
         <h4 className="font-headline font-bold text-on-surface group-hover:text-primary transition-all leading-none">{name}</h4>
-        <span className="text-[9px] font-mono font-bold text-accent uppercase">{type}</span>
+        <span className="text-[9px] font-body font-bold text-accent uppercase">{type}</span>
       </div>
     </div>
     <p className="text-[11px] text-on-surface-variant italic leading-relaxed line-clamp-2">{desc}</p>
