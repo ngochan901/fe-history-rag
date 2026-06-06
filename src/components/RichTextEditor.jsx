@@ -9,7 +9,7 @@ const RichTextEditor = ({ value, onChange, placeholder }) => {
     if (editorRef.current && editorRef.current.innerHTML !== value) {
       editorRef.current.innerHTML = value || '';
     }
-  }, []);
+  }, [value]);
 
   // Hàm thực thi lệnh định dạng
   const runCommand = (command, val = null) => {
