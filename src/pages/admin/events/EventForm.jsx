@@ -71,7 +71,7 @@ const EventForm = () => {
            </h2>
            <p className="font-body text-sm text-on-surface-variant italic mt-2">"Ghi chép những cột mốc vàng son của dân tộc"</p>
         </div>
-        <div className="flex gap-3 font-mono text-[10px] font-bold tracking-widest">
+        <div className="flex gap-3 font-body text-[10px] font-bold tracking-widest">
           <button onClick={() => navigate('/admin/events')} className="px-6 py-2.5 border border-primary text-primary hover:bg-primary/5 transition-all uppercase">HỦY BỎ</button>
           <button className="px-8 py-2.5 bg-primary text-white shadow-lg hover:bg-primary-container transition-all active:scale-95 uppercase">
             <span className="material-symbols-outlined text-sm">save</span> LƯU SỰ KIỆN
@@ -86,7 +86,7 @@ const EventForm = () => {
           <section className="bg-white p-8 border border-outline-variant shadow-sm space-y-6 relative overflow-hidden">
             <div className="absolute top-0 right-0 p-4 opacity-5"><span className="material-symbols-outlined text-[80px]">shield</span></div>
             <div className="space-y-1">
-              <label className="font-mono text-[10px] uppercase font-bold text-on-surface-variant tracking-widest opacity-60 block">Tên sự kiện lịch sử *</label>
+              <label className="font-body text-[10px] uppercase font-bold text-on-surface-variant tracking-widest opacity-60 block">Tên sự kiện lịch sử *</label>
               <input 
                 type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})}
                 className="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary py-2 font-headline text-2xl text-primary font-bold outline-none transition-all"
@@ -96,11 +96,11 @@ const EventForm = () => {
 
             <div className="grid grid-cols-2 gap-8">
               <div className="space-y-1">
-                <label className="font-mono text-[10px] uppercase font-bold text-on-surface-variant tracking-widest opacity-60 block">Thời gian xảy ra</label>
+                <label className="font-body text-[10px] uppercase font-bold text-on-surface-variant tracking-widest opacity-60 block">Thời gian xảy ra</label>
                 <input type="text" value={formData.time} onChange={e => setFormData({...formData, time: e.target.value})} className="w-full bg-transparent border-0 border-b border-outline-variant focus:border-primary py-2 outline-none font-medium" placeholder="Ví dụ: Năm 1010" />
               </div>
               <div className="space-y-1">
-                <label className="font-mono text-[10px] uppercase font-bold text-on-surface-variant tracking-widest opacity-60 block">Triều đại</label>
+                <label className="font-body text-[10px] uppercase font-bold text-on-surface-variant tracking-widest opacity-60 block">Triều đại</label>
                 <select value={formData.dynasty} onChange={e => setFormData({...formData, dynasty: e.target.value})} className="w-full bg-transparent border-0 border-b border-outline-variant focus:border-primary py-2 outline-none cursor-pointer">
                   <option>Nhà Lý</option><option>Nhà Trần</option><option>Nhà Lê Sơ</option>
                 </select>
@@ -108,7 +108,7 @@ const EventForm = () => {
             </div>
 
             <div className="space-y-1">
-              <label className="font-mono text-[10px] uppercase font-bold text-on-surface-variant tracking-widest opacity-60 block">Tóm lược (Summary)</label>
+              <label className="font-body text-[10px] uppercase font-bold text-on-surface-variant tracking-widest opacity-60 block">Tóm lược (Summary)</label>
               <textarea rows="3" value={formData.summary} onChange={e => setFormData({...formData, summary: e.target.value})} className="w-full bg-transparent border-none focus:ring-0 font-body text-sm italic leading-relaxed resize-none outline-none" placeholder="Mô tả tóm tắt diễn biến..." />
             </div>
           </section>
@@ -121,8 +121,8 @@ const EventForm = () => {
               <EditorBtn onClick={() => runCommand('italic')} label="I" />
               <EditorBtn onClick={() => runCommand('underline')} label="U" />
               <div className="w-px h-6 bg-outline-variant mx-2"></div>
-              <button onClick={() => runCommand('formatBlock', 'H1')} className="px-2 font-bold text-xs hover:text-primary transition-all font-mono">H1</button>
-              <button onClick={() => runCommand('formatBlock', 'H2')} className="px-2 font-bold text-xs hover:text-primary transition-all font-mono">H2</button>
+              <button onClick={() => runCommand('formatBlock', 'H1')} className="px-2 font-bold text-xs hover:text-primary transition-all font-body">H1</button>
+              <button onClick={() => runCommand('formatBlock', 'H2')} className="px-2 font-bold text-xs hover:text-primary transition-all font-body">H2</button>
               <div className="w-px h-6 bg-outline-variant mx-2"></div>
               <EditorBtn onClick={() => runCommand('insertUnorderedList')} icon="format_list_bulleted" />
               <EditorBtn onClick={() => runCommand('formatBlock', 'blockquote')} icon="format_quote" />
@@ -153,7 +153,7 @@ const EventForm = () => {
         {/* CỘT PHẢI: LIÊN KẾT */}
         <div className="col-span-12 lg:col-span-4 space-y-6">
           <div className="bg-white p-6 border border-outline-variant shadow-sm space-y-4">
-            <h4 className="font-mono text-[10px] font-bold text-primary uppercase border-b pb-2 tracking-widest flex items-center gap-2">
+            <h4 className="font-body text-[10px] font-bold text-primary uppercase border-b pb-2 tracking-widest flex items-center gap-2">
               <span className="material-symbols-outlined text-sm">location_on</span> Địa danh liên quan
             </h4>
             <div className="flex flex-wrap gap-2">
@@ -165,7 +165,7 @@ const EventForm = () => {
           </div>
 
           <div className="bg-white p-6 border border-outline-variant shadow-sm space-y-4">
-            <h4 className="font-mono text-[10px] font-bold text-primary uppercase border-b pb-2 tracking-widest">Nhân vật then chốt</h4>
+            <h4 className="font-body text-[10px] font-bold text-primary uppercase border-b pb-2 tracking-widest">Nhân vật then chốt</h4>
             <div className="space-y-3">
               {['Trần Quang Khải', 'Trần Nhật Duật'].map(name => (
                 <div key={name} className="flex items-center gap-3 p-2 bg-surface-low border border-outline-variant/30 hover:bg-white transition-all cursor-pointer group">

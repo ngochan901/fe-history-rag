@@ -45,7 +45,7 @@ const MemberForm = () => {
 
     <button
       onClick={() => navigate('/admin/members')}
-      className="px-5 py-2 border border-primary text-primary font-mono text-[10px] font-bold hover:bg-primary/5 transition-all uppercase"
+      className="px-5 py-2 border border-primary text-primary font-body text-[10px] font-bold hover:bg-primary/5 transition-all uppercase"
     >
       HỦY BỎ
     </button>
@@ -56,7 +56,7 @@ const MemberForm = () => {
         alert("Đã lưu hồ sơ!");
         // navigate('/admin/members')
       }}
-      className="px-8 py-2 bg-primary text-white font-mono text-[10px] font-bold shadow-lg hover:bg-primary-container flex items-center gap-2 transition-all uppercase"
+      className="px-8 py-2 bg-primary text-white font-body text-[10px] font-bold shadow-lg hover:bg-primary-container flex items-center gap-2 transition-all uppercase"
     >
       <span className="material-symbols-outlined text-sm">save</span>
       LƯU HỒ SƠ
@@ -72,19 +72,19 @@ const MemberForm = () => {
                
                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
                   <div className="space-y-1">
-                    <label className="font-mono text-[10px] font-bold uppercase opacity-60">Họ và tên *</label>
+                    <label className="font-body text-[10px] font-bold uppercase opacity-60">Họ và tên *</label>
                     <input type="text" value={form.fullName} className="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary py-2 font-headline text-xl" placeholder="Vd: Nguyễn Văn A..." />
                   </div>
                   <div className="space-y-1">
-                    <label className="font-mono text-[10px] font-bold uppercase opacity-60">Tên đăng nhập</label>
+                    <label className="font-body text-[10px] font-bold uppercase opacity-60">Tên đăng nhập</label>
                     <input type="text" value={form.username} className="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary py-2 font-body" placeholder="nva_scholar" />
                   </div>
                   <div className="col-span-2 space-y-1">
-                    <label className="font-mono text-[10px] font-bold uppercase opacity-60">Mật khẩu {isEdit && '(Bỏ trống nếu không đổi)'}</label>
+                    <label className="font-body text-[10px] font-bold uppercase opacity-60">Mật khẩu {isEdit && '(Bỏ trống nếu không đổi)'}</label>
                     <input type="password" placeholder="••••••••" className="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary py-2" />
                   </div>
                   <div className="col-span-2 space-y-1">
-                    <label className="font-mono text-[10px] font-bold uppercase opacity-60">Tiểu sử & Giới thiệu</label>
+                    <label className="font-body text-[10px] font-bold uppercase opacity-60">Tiểu sử & Giới thiệu</label>
                     <textarea rows="4" value={form.bio} className="w-full bg-surface-low border border-outline-variant p-4 rounded text-sm italic italic leading-relaxed" placeholder="Mô tả sơ lược về thành viên..." />
                   </div>
                </div>
@@ -93,7 +93,7 @@ const MemberForm = () => {
 
           <div className="col-span-12 lg:col-span-4 space-y-6">
              <div className="bg-white p-6 border border-outline-variant shadow-sm space-y-6">
-                <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest text-primary border-b pb-2">Vai trò Hệ thống</h4>
+                <h4 className="font-body text-[10px] font-bold uppercase tracking-widest text-primary border-b pb-2">Vai trò Hệ thống</h4>
                 <div className="space-y-3">
                    {[
                      { id: 'admin', label: 'Quản trị viên', icon: 'verified_user' },

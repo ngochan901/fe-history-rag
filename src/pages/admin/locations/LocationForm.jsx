@@ -69,7 +69,7 @@ const removeImage = (e) => {
     </p>
   </div>
 
-  <div className="flex gap-3 font-mono text-[10px] font-bold tracking-widest">
+  <div className="flex gap-3 font-body text-[10px] font-bold tracking-widest">
     <button
       onClick={() => navigate('/admin/locations')}
       className="px-5 py-2 border border-primary text-primary hover:bg-primary/5 transition-all"
@@ -88,13 +88,13 @@ const removeImage = (e) => {
             {/* Thông tin tọa độ */}
             <section className="bg-surface-low border border-outline-variant p-8 shadow-sm space-y-6">
               <div className="col-span-2">
-                <label className="font-mono text-[10px] font-bold uppercase text-on-surface-variant tracking-widest">Tên địa danh lịch sử *</label>
+                <label className="font-body text-[10px] font-bold uppercase text-on-surface-variant tracking-widest">Tên địa danh lịch sử *</label>
                 <input type="text" value={form.name} className="w-full bg-transparent border-b border-outline-variant focus:border-primary py-2 font-headline text-2xl text-primary outline-none transition-all" placeholder="Ví dụ: Hoàng Thành Thăng Long..." />
               </div>
 
               <div className="grid grid-cols-2 gap-8">
                 <div>
-                  <label className="font-mono text-[10px] font-bold uppercase text-on-surface-variant">Loại hình</label>
+                  <label className="font-body text-[10px] font-bold uppercase text-on-surface-variant">Loại hình</label>
                   <select className="w-full bg-transparent border-b border-outline-variant focus:border-primary py-2 outline-none cursor-pointer">
                     <option>Cố đô / Thành quách</option>
                     <option>Ải / Chiến trường</option>
@@ -103,12 +103,12 @@ const removeImage = (e) => {
                 </div>
                 <div className="flex gap-4">
                    <div className="flex-1">
-                     <label className="font-mono text-[10px] font-bold uppercase text-on-surface-variant">Vĩ độ (Lat)</label>
-                     <input type="text" value={form.lat} className="w-full bg-transparent border-b border-outline-variant focus:border-primary py-2 outline-none font-mono text-xs" placeholder="21.03" />
+                     <label className="font-body text-[10px] font-bold uppercase text-on-surface-variant">Vĩ độ (Lat)</label>
+                     <input type="text" value={form.lat} className="w-full bg-transparent border-b border-outline-variant focus:border-primary py-2 outline-none font-body text-xs" placeholder="21.03" />
                    </div>
                    <div className="flex-1">
-                     <label className="font-mono text-[10px] font-bold uppercase text-on-surface-variant">Kinh độ (Long)</label>
-                     <input type="text" value={form.long} className="w-full bg-transparent border-b border-outline-variant focus:border-primary py-2 outline-none font-mono text-xs" placeholder="105.83" />
+                     <label className="font-body text-[10px] font-bold uppercase text-on-surface-variant">Kinh độ (Long)</label>
+                     <input type="text" value={form.long} className="w-full bg-transparent border-b border-outline-variant focus:border-primary py-2 outline-none font-body text-xs" placeholder="105.83" />
                    </div>
                 </div>
               </div>
@@ -117,7 +117,7 @@ const removeImage = (e) => {
             {/* Triều đại & Mô tả */}
             <section className="bg-white border border-outline-variant p-8 shadow-sm space-y-6">
                <div className="space-y-4">
-                  <label className="font-mono text-[10px] font-bold uppercase text-on-surface-variant">Triều đại liên quan</label>
+                  <label className="font-body text-[10px] font-bold uppercase text-on-surface-variant">Triều đại liên quan</label>
                   <div className="flex flex-wrap gap-2">
                     {form.dynasties.map(d => (
                       <span key={d} className="px-3 py-1 bg-primary text-white rounded-full text-[10px] font-bold uppercase flex items-center gap-2">
@@ -128,7 +128,7 @@ const removeImage = (e) => {
                   </div>
                </div>
                <div className="space-y-2">
-                  <label className="font-mono text-[10px] font-bold uppercase text-on-surface-variant">Diễn giải lịch sử</label>
+                  <label className="font-body text-[10px] font-bold uppercase text-on-surface-variant">Diễn giải lịch sử</label>
                   <textarea rows="6" value={form.description} className="w-full bg-surface-low border-none p-4 rounded-lg outline-none focus:ring-1 focus:ring-primary/30 font-body text-sm leading-relaxed" />
                </div>
             </section>
@@ -137,7 +137,7 @@ const removeImage = (e) => {
           {/* CỘT PHẢI: MEDIA & MAP */}
           <div className="col-span-12 lg:col-span-4 space-y-8">
 <div className="bg-white p-6 border border-outline-variant shadow-sm space-y-4">
-  <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest text-primary border-b border-outline-variant pb-2">
+  <h4 className="font-body text-[10px] font-bold uppercase tracking-widest text-primary border-b border-outline-variant pb-2">
     Ảnh đại diện địa danh
   </h4>
 
@@ -162,7 +162,7 @@ const removeImage = (e) => {
         />
 
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-          <span className="text-white font-mono text-[10px] font-bold uppercase tracking-widest">
+          <span className="text-white font-body text-[10px] font-bold uppercase tracking-widest">
             Thay đổi ảnh
           </span>
 
@@ -182,7 +182,7 @@ const removeImage = (e) => {
           add_photo_alternate
         </span>
 
-        <span className="font-mono text-[9px] font-bold uppercase tracking-wider">
+        <span className="font-body text-[9px] font-bold uppercase tracking-wider">
           Tải lên ảnh địa danh
         </span>
       </>
@@ -191,14 +191,14 @@ const removeImage = (e) => {
 </div>
 
              <div className="bg-white border border-outline-variant p-6 shadow-sm">
-                <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest text-on-surface-variant border-b border-outline-variant pb-2 mb-4">Vị trí địa lý</h4>
+                <h4 className="font-body text-[10px] font-bold uppercase tracking-widest text-on-surface-variant border-b border-outline-variant pb-2 mb-4">Vị trí địa lý</h4>
                 <div className="aspect-square bg-slate-200 rounded-lg overflow-hidden relative">
                    <img className="w-full h-full object-cover grayscale opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBksZeeHANbqwkd4mlRNQsgMsvIun-ZG4WR3HQ56nHZ1DfXs4D_WHm4h1l27eyL2hHqBBZg2rA_fS2kRulKk6mSdQsvLQTl3KWfPQON_aNliOmvX8fUDq6AZxzRnmN7VlsOQuAl5shgcT1mHYNvD_xis6AtEbw-f8ZTFRhyNjXzY0uB57J5R2V4VUY5SLcS21uKHXyT-RZgy5j1ixaIScRSg7Vp2TzLxipto_UuuLAkdLdqVP7b94T-QP7rJVxRDQ7c7MwCQv-FW1Y" alt="mini-map" />
                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary">
                       <span className="material-symbols-outlined text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>location_on</span>
                    </div>
                 </div>
-                <div className="mt-3 flex justify-between items-center text-[10px] font-bold font-mono">
+                <div className="mt-3 flex justify-between items-center text-[10px] font-bold font-body">
                    <span>Ba Đình, Hà Nội</span>
                    <button className="text-primary underline">Mở bản đồ lớn</button>
                 </div>

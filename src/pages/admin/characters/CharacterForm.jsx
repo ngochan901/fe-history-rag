@@ -56,7 +56,7 @@ const handleImageChange = (e) => {
     </p>
   </div>
 
-  <div className="flex gap-3 font-mono text-[10px] font-bold tracking-widest">
+  <div className="flex gap-3 font-body text-[10px] font-bold tracking-widest">
     <button
       onClick={() => navigate('/admin/characters')}
       className="px-5 py-2 border border-primary text-primary hover:bg-primary/5 transition-all"
@@ -84,15 +84,15 @@ const handleImageChange = (e) => {
               
               <div className="grid grid-cols-2 gap-6">
                 <div className="col-span-2 md:col-span-1 flex flex-col gap-1">
-                  <label className="font-mono text-[10px] font-bold text-on-surface-variant uppercase">Tên nhân vật *</label>
+                  <label className="font-body text-[10px] font-bold text-on-surface-variant uppercase">Tên nhân vật *</label>
                   <input type="text" value={form.name} className="bg-transparent border-b-2 border-outline-variant focus:border-primary py-2 outline-none font-headline text-lg" placeholder="Vd: Trần Hưng Đạo" />
                 </div>
                 <div className="col-span-2 md:col-span-1 flex flex-col gap-1">
-                  <label className="font-mono text-[10px] font-bold text-on-surface-variant uppercase">Biệt hiệu / Tên tự</label>
+                  <label className="font-body text-[10px] font-bold text-on-surface-variant uppercase">Biệt hiệu / Tên tự</label>
                   <input type="text" value={form.title} className="bg-transparent border-b-2 border-outline-variant focus:border-primary py-2 outline-none font-body text-base" />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <label className="font-mono text-[10px] font-bold text-on-surface-variant uppercase">Vai trò chính</label>
+                  <label className="font-body text-[10px] font-bold text-on-surface-variant uppercase">Vai trò chính</label>
                   <select className="bg-transparent border-b-2 border-outline-variant py-2 outline-none cursor-pointer">
                     <option>Danh tướng</option>
                     <option>Quân chủ</option>
@@ -101,12 +101,12 @@ const handleImageChange = (e) => {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                    <div>
-                     <label className="font-mono text-[10px] font-bold text-on-surface-variant uppercase">Năm sinh</label>
-                     <input type="text" value={form.birth} className="w-full bg-transparent border-b-2 border-outline-variant focus:border-primary py-2 outline-none font-mono text-xs" />
+                     <label className="font-body text-[10px] font-bold text-on-surface-variant uppercase">Năm sinh</label>
+                     <input type="text" value={form.birth} className="w-full bg-transparent border-b-2 border-outline-variant focus:border-primary py-2 outline-none font-body text-xs" />
                    </div>
                    <div>
-                     <label className="font-mono text-[10px] font-bold text-on-surface-variant uppercase">Năm mất</label>
-                     <input type="text" value={form.death} className="w-full bg-transparent border-b-2 border-outline-variant focus:border-primary py-2 outline-none font-mono text-xs" />
+                     <label className="font-body text-[10px] font-bold text-on-surface-variant uppercase">Năm mất</label>
+                     <input type="text" value={form.death} className="w-full bg-transparent border-b-2 border-outline-variant focus:border-primary py-2 outline-none font-body text-xs" />
                    </div>
                 </div>
               </div>
@@ -134,7 +134,7 @@ const handleImageChange = (e) => {
               <div className="grid grid-cols-3 gap-4 text-center">
                  {['Cha/Mẹ', 'Anh/Chị/Em', 'Con cái'].map(label => (
                    <div key={label} className="p-4 border border-outline-variant bg-white flex flex-col items-center gap-2 group cursor-pointer hover:border-primary transition-all">
-                      <span className="font-mono text-[9px] uppercase font-bold opacity-60">{label}</span>
+                      <span className="font-body text-[9px] uppercase font-bold opacity-60">{label}</span>
                       <span className="material-symbols-outlined text-outline-variant group-hover:text-primary">add_circle</span>
                    </div>
                  ))}
@@ -147,7 +147,7 @@ const handleImageChange = (e) => {
              {/* Ảnh đại diện */}
              {/* ẢNH ĐẠI DIỆN */}
 <div className="bg-white p-6 border border-outline-variant shadow-sm space-y-4">
-  <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest text-primary border-b border-outline-variant pb-2">
+  <h4 className="font-body text-[10px] font-bold uppercase tracking-widest text-primary border-b border-outline-variant pb-2">
     Ảnh chân dung / Tượng
   </h4>
 
@@ -252,7 +252,7 @@ const handleImageChange = (e) => {
 
              {/* Phân loại */}
              <div className="bg-white border border-outline-variant p-6 shadow-sm space-y-4">
-                <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest text-primary border-b border-outline-variant pb-2">Triều đại & Thời kỳ</h4>
+                <h4 className="font-body text-[10px] font-bold uppercase tracking-widest text-primary border-b border-outline-variant pb-2">Triều đại & Thời kỳ</h4>
                 <div className="space-y-4">
                    <div className="space-y-1">
                       <label className="text-[10px] font-bold opacity-60">Triều đại chủ chốt</label>
@@ -267,7 +267,7 @@ const handleImageChange = (e) => {
 
              {/* Tác phẩm */}
              <div className="bg-primary/90 text-white p-6 shadow-xl space-y-4">
-                <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest border-b border-white/20 pb-2 italic">Tác phẩm & Thành tựu</h4>
+                <h4 className="font-body text-[10px] font-bold uppercase tracking-widest border-b border-white/20 pb-2 italic">Tác phẩm & Thành tựu</h4>
                 <div className="space-y-2 text-xs">
                    <p className="border-l border-white/40 pl-3 italic opacity-80">"Hịch Tướng Sĩ"</p>
                    <p className="border-l border-white/40 pl-3 italic opacity-80">"Binh Thư Yếu Lược"</p>

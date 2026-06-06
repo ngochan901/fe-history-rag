@@ -10,7 +10,7 @@ const KnowledgeGraph = () => {
     { id: 1, name: 'Lê Thánh Tông', type: 'Nhân vật', pos: { top: '50%', left: '50%' }, size: 'w-20 h-20' },
     { id: 2, name: 'Thăng Long', type: 'Địa danh', pos: { top: '30%', left: '40%' }, size: 'w-12 h-12' },
     { id: 3, name: 'Cải cách Hồng Đức', type: 'Sự kiện', pos: { top: '35%', left: '60%' }, size: 'w-14 h-14' },
-    { id: 4, name: 'Hồng Đức Bản Đồ', type: 'Sử liệu', pos: { top: '75%', left: '45%' }, size: 'w-12 h-12' },
+    // { id: 4, name: 'Hồng Đức Bản Đồ', type: 'Sử liệu', pos: { top: '75%', left: '45%' }, size: 'w-12 h-12' },
   ];
 
   return (
@@ -59,7 +59,7 @@ const KnowledgeGraph = () => {
            ))}
 
            {/* Chú giải góc trái */}
-           <div className="absolute bottom-6 left-6 bg-white/90 p-4 rounded-lg border border-outline-variant shadow-xl text-[10px] font-mono space-y-2">
+           <div className="absolute bottom-6 left-6 bg-white/90 p-4 rounded-lg border border-outline-variant shadow-xl text-[10px] font-body space-y-2">
               <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary"></span> Nhân vật</div>
               <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-accent"></span> Địa danh</div>
               <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-secondary"></span> Sự kiện</div>
@@ -82,7 +82,7 @@ const KnowledgeGraph = () => {
                    <img className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNfiTVo5os9QtaCn3VrsO1XcNZsTmiWe87vp1XlvMoeJuMGsZnOH082GUdhWPAWWyhUqOj5sqccrXHibVO4RsZnfE69p20XFNroA2b9q3x2JeS1yODf0lDdw4NZj1tid9h8_eF4p9NcJwcB4MEKfhjR40Av4MUKpQ6usFe9iRj5qjpxuInHSBK8ZZ4bTckfV-Z-bNiS-DlL6EXFo5gK2qlsM0-xKfR1BV8NNaHvBrsVt3snQnMpJgPuXNLNS2cHm9jEuB6dK0eykY" alt="preview" />
                 </div>
                 <div className="space-y-4">
-                   <h4 className="font-mono text-[10px] font-bold uppercase border-b pb-2">Liên kết thực thể (6)</h4>
+                   <h4 className="font-body text-[10px] font-bold uppercase border-b pb-2">Liên kết thực thể (6)</h4>
                    <div className="space-y-2">
                       <div className="flex items-center gap-3 p-2 hover:bg-surface-low rounded transition-all cursor-pointer text-sm">
                          <span className="material-symbols-outlined text-primary text-sm">gavel</span>

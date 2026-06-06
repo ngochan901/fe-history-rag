@@ -30,11 +30,11 @@ const EventManagement = () => {
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-surface-container border border-outline-variant p-6 rounded-xl">
-             <p className="font-mono text-[10px] text-on-surface-variant uppercase tracking-widest">Tổng sự kiện</p>
+             <p className="font-body text-[10px] text-on-surface-variant uppercase tracking-widest">Tổng sự kiện</p>
              <h3 className="font-headline text-3xl text-primary font-bold mt-1">4,200</h3>
           </div>
           <div className="bg-surface-variant/30 border border-outline-variant p-6 rounded-xl text-on-primary-container">
-             <p className="font-mono text-[10px] uppercase tracking-widest">Chờ duyệt</p>
+             <p className="font-body text-[10px] uppercase tracking-widest">Chờ duyệt</p>
              <h3 className="font-headline text-3xl font-bold mt-1 text-primary">350</h3>
           </div>
         </div>
@@ -55,7 +55,7 @@ const EventManagement = () => {
         {/* Data Table */}
         <div className="bg-white border-x border-b border-outline-variant rounded-b-lg overflow-hidden shadow-sm">
           <table className="w-full text-left border-collapse font-body">
-            <thead className="bg-surface-variant/50 font-mono text-[10px] uppercase tracking-widest text-on-surface border-b border-outline-variant">
+            <thead className="bg-surface-variant/50 font-body text-[10px] uppercase tracking-widest text-on-surface border-b border-outline-variant">
               <tr>
                 <th className="px-6 py-4">ID</th>
                 <th className="px-6 py-4">Tên sự kiện</th>
@@ -67,7 +67,7 @@ const EventManagement = () => {
             <tbody className="divide-y divide-outline-variant text-sm">
               {events.map((event) => (
                 <tr key={event.id} className="hover:bg-surface-low transition-colors group">
-                  <td className="px-6 py-4 font-mono text-xs text-on-surface-variant">{event.id}</td>
+                  <td className="px-6 py-4 font-body text-xs text-on-surface-variant">{event.id}</td>
                   <td className="px-6 py-4">
                     <div className="font-headline text-primary font-bold text-base group-hover:underline cursor-pointer">{event.name}</div>
                     <div className="text-[11px] text-on-surface-variant italic">{event.sub}</div>
@@ -99,7 +99,7 @@ const EventManagement = () => {
             <span className="material-symbols-outlined text-red-600 text-5xl mb-4">delete_forever</span>
             <h3 className="font-headline text-2xl text-on-surface font-bold mb-2">Xác nhận xóa sự kiện?</h3>
             <p className="font-body text-sm text-on-surface-variant mb-8">Bạn có chắc chắn muốn xóa bản ghi <br/><strong className="text-primary italic">"{deleteModal.itemName}"</strong>?</p>
-            <div className="flex gap-3 font-mono text-[11px] font-bold">
+            <div className="flex gap-3 font-body text-[11px] font-bold">
               <button onClick={() => setDeleteModal({ ...deleteModal, open: false })} className="flex-1 py-3 border border-outline rounded-lg hover:bg-surface-low transition-all">HỦY BỎ</button>
               <button onClick={() => { alert('Đã xóa'); setDeleteModal({ ...deleteModal, open: false }) }} className="flex-1 py-3 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition-all">XÓA NGAY</button>
             </div>

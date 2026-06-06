@@ -75,7 +75,7 @@ const MetadataManagement = () => {
               <span className="material-symbols-outlined">sell</span> Quản lý Thẻ (Tags)
             </h3>
             <table className="w-full text-left">
-              <thead className="font-mono text-[10px] uppercase text-on-surface-variant border-b border-outline-variant">
+              <thead className="font-body text-[10px] uppercase text-on-surface-variant border-b border-outline-variant">
                 <tr><th className="pb-3 px-2">Tên thẻ</th><th className="pb-3">Sử dụng</th><th className="pb-3 text-right">#</th></tr>
               </thead>
               <tbody className="text-sm">
@@ -87,7 +87,7 @@ const MetadataManagement = () => {
                           <div className="w-24 h-1.5 bg-surface-variant rounded-full overflow-hidden">
                              <div className="bg-accent h-full" style={{width: `${tag.usage}%`}}></div>
                           </div>
-                          <span className="font-mono text-[10px] font-bold">{tag.count}</span>
+                          <span className="font-body text-[10px] font-bold">{tag.count}</span>
                        </div>
                     </td>
                     <td className="text-right">
@@ -107,7 +107,7 @@ const MetadataManagement = () => {
               <div className="absolute top-1/2 left-0 right-0 h-[1px] border-t border-dashed border-accent hidden md:block"></div>
               {periods.map(p => (
                 <div key={p.id} className={`relative z-10 p-5 border rounded-lg transition-all hover:scale-105 hover:shadow-xl group ${p.active ? 'bg-primary text-white border-primary' : 'bg-white border-outline-variant'}`}>
-                  <span className={`font-mono text-[9px] font-bold uppercase tracking-widest ${p.active ? 'text-accent' : 'text-on-surface-variant'}`}>{p.range}</span>
+                  <span className={`font-body text-[9px] font-bold uppercase tracking-widest ${p.active ? 'text-accent' : 'text-on-surface-variant'}`}>{p.range}</span>
                   <h4 className="font-headline font-bold text-xl mt-1">{p.name}</h4>
                   <p className={`text-[11px] mt-2 italic leading-relaxed line-clamp-2 ${p.active ? 'opacity-80' : 'text-on-surface-variant'}`}>{p.desc}</p>
                   <div className="flex gap-2 mt-4 pt-4 border-t border-current transition-all">
@@ -129,7 +129,7 @@ const MetadataManagement = () => {
                 <span className="material-symbols-outlined text-5xl text-red-600 mb-4">warning</span>
                 <h3 className="font-headline text-2xl font-bold text-primary italic">Xác nhận xóa {deleteModal.type}?</h3>
                 <p className="font-body text-sm text-on-surface-variant mt-4">Dữ liệu của <strong>"{deleteModal.name}"</strong> sẽ bị gỡ bỏ vĩnh viễn khỏi các liên kết sử liệu.</p>
-                <div className="flex gap-4 mt-10 font-mono text-[11px] font-bold">
+                <div className="flex gap-4 mt-10 font-body text-[11px] font-bold">
                    <button onClick={() => setDeleteModal({ ...deleteModal, open: false })} className="flex-1 py-3 border border-outline rounded-lg hover:bg-surface-low transition-all">HỦY BỎ</button>
                    <button className="flex-1 py-3 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition-all">XÁC NHẬN XÓA</button>
                 </div>
@@ -144,7 +144,7 @@ const MetadataManagement = () => {
 const StatCard = ({ label, value, icon }) => (
   <div className="bg-white border border-outline-variant p-6 rounded-xl flex items-center justify-between shadow-sm hover:-translate-y-1 transition-all">
     <div>
-      <p className="font-mono text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">{label}</p>
+      <p className="font-body text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">{label}</p>
       <h3 className="font-headline text-3xl text-primary font-bold mt-1">{value}</h3>
     </div>
     <span className="material-symbols-outlined text-accent opacity-20 text-4xl">{icon}</span>

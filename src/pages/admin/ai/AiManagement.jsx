@@ -39,7 +39,7 @@ const AiManagement = () => {
         {stats.map((s, idx) => (
           <div key={idx} className="bg-white border border-outline-variant p-6 rounded-xl shadow-sm flex items-center justify-between">
             <div>
-              <p className="font-mono text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">{s.label}</p>
+              <p className="font-body text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">{s.label}</p>
               <h3 className={`font-headline text-3xl font-bold mt-1 ${s.color}`}>{s.value}</h3>
             </div>
             <span className="material-symbols-outlined text-4xl opacity-10">{s.icon}</span>
@@ -57,7 +57,7 @@ const AiManagement = () => {
           <div className="p-8 space-y-6">
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="font-mono text-[10px] font-bold uppercase opacity-60">LLM Engine</label>
+                <label className="font-body text-[10px] font-bold uppercase opacity-60">LLM Engine</label>
                 <select className="w-full bg-surface-low border border-outline-variant p-3 rounded font-body text-sm outline-none focus:border-primary">
                   <option>GPT-4o (Historical Optimized)</option>
                   <option>Claude 3.5 Sonnet</option>
@@ -65,7 +65,7 @@ const AiManagement = () => {
                 </select>
               </div>
               <div className="space-y-2">
-                <label className="font-mono text-[10px] font-bold uppercase opacity-60">Temperature (Độ sáng tạo)</label>
+                <label className="font-body text-[10px] font-bold uppercase opacity-60">Temperature (Độ sáng tạo)</label>
                 <input type="range" className="w-full accent-primary" />
               </div>
             </div>
@@ -75,7 +75,7 @@ const AiManagement = () => {
             </div>
 
             <div className="space-y-4">
-              <label className="font-mono text-[10px] font-bold uppercase opacity-60 block">System Prompt (Chỉ thị cốt lõi)</label>
+              <label className="font-body text-[10px] font-bold uppercase opacity-60 block">System Prompt (Chỉ thị cốt lõi)</label>
               <textarea 
                 rows="5" 
                 className="w-full bg-surface-low border border-outline-variant p-4 rounded font-body text-sm italic"
@@ -92,13 +92,13 @@ const AiManagement = () => {
             <h3 className="font-headline text-2xl font-bold italic mb-6 relative z-10">Nạp Tri thức Mới</h3>
             <div className="border-2 border-dashed border-white/30 rounded-lg p-10 flex flex-col items-center justify-center relative z-10 hover:bg-white/5 transition-all cursor-pointer">
               <span className="material-symbols-outlined text-5xl mb-4">cloud_upload</span>
-              <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-center">Kéo thả PDF sử liệu hoặc văn bản cổ</p>
+              <p className="font-body text-[10px] font-bold uppercase tracking-widest text-center">Kéo thả PDF sử liệu hoặc văn bản cổ</p>
               <p className="text-[9px] opacity-60 mt-2 uppercase">Hỗ trợ tự động OCR chữ Hán - Nôm</p>
             </div>
           </div>
 
           <div className="bg-white border border-outline-variant rounded-xl p-6 shadow-sm">
-            <h4 className="font-mono text-[10px] font-bold uppercase text-primary border-b border-outline-variant pb-2 mb-4 tracking-widest">Lịch sử nạp liệu</h4>
+            <h4 className="font-body text-[10px] font-bold uppercase text-primary border-b border-outline-variant pb-2 mb-4 tracking-widest">Lịch sử nạp liệu</h4>
             <div className="space-y-4">
               {[
                 { name: 'Kỷ_Nhà_Trần_Full.pdf', date: '2 giờ trước', status: 'Done' },
@@ -109,7 +109,7 @@ const AiManagement = () => {
                     <span className="material-symbols-outlined text-on-surface-variant text-sm">description</span>
                     <div className="text-[11px]">
                       <p className="font-bold text-on-surface group-hover:text-primary transition-colors">{file.name}</p>
-                      <p className="opacity-50 font-mono text-[9px] uppercase">{file.date}</p>
+                      <p className="opacity-50 font-body text-[9px] uppercase">{file.date}</p>
                     </div>
                   </div>
                   <span className="material-symbols-outlined text-green-600 text-sm">check_circle</span>

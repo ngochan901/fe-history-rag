@@ -77,7 +77,7 @@ const handleImageChange = (e) => {
   <div className="flex gap-3 items-center">
     <button
       onClick={() => navigate('/admin/metadata')}
-      className="px-5 py-2 border border-primary text-primary font-mono text-[10px] font-bold hover:bg-primary/5 transition-all uppercase"
+      className="px-5 py-2 border border-primary text-primary font-body text-[10px] font-bold hover:bg-primary/5 transition-all uppercase"
     >
       HỦY BỎ
     </button>
@@ -87,7 +87,7 @@ const handleImageChange = (e) => {
         alert('Đã lưu!');
         navigate('/admin/metadata');
       }}
-      className="px-6 py-2 bg-primary text-white font-mono text-[10px] font-bold shadow-lg hover:bg-primary-container flex items-center gap-2 transition-all uppercase"
+      className="px-6 py-2 bg-primary text-white font-body text-[10px] font-bold shadow-lg hover:bg-primary-container flex items-center gap-2 transition-all uppercase"
     >
       <span className="material-symbols-outlined text-sm">save</span>
       {isEdit ? 'LƯU THAY ĐỔI' : 'TẠO DANH MỤC'}
@@ -107,7 +107,7 @@ const handleImageChange = (e) => {
                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
                   {/* Tên danh mục */}
                   <div className="space-y-1">
-                    <label className="block font-mono text-[10px] font-bold uppercase text-on-surface-variant tracking-widest">Tên danh mục *</label>
+                    <label className="block font-body text-[10px] font-bold uppercase text-on-surface-variant tracking-widest">Tên danh mục *</label>
                     <input 
                       type="text" value={form.name} onChange={handleNameChange}
                       className="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary py-2 font-headline text-2xl text-primary outline-none transition-all"
@@ -117,12 +117,12 @@ const handleImageChange = (e) => {
 
                   {/* Slug */}
                   <div className="space-y-1">
-                    <label className="block font-mono text-[10px] font-bold uppercase text-on-surface-variant tracking-widest">Đường dẫn (Slug)</label>
+                    <label className="block font-body text-[10px] font-bold uppercase text-on-surface-variant tracking-widest">Đường dẫn (Slug)</label>
                     <div className="flex items-center bg-surface-low px-3 py-2 rounded border border-outline-variant/30 mt-1">
-                       <span className="text-[10px] text-on-surface-variant opacity-50 font-mono">/danh-muc/</span>
+                       <span className="text-[10px] text-on-surface-variant opacity-50 font-body">/danh-muc/</span>
                        <input 
                          type="text" value={form.slug} readOnly
-                         className="flex-1 bg-transparent border-none text-xs font-mono outline-none text-on-surface-variant italic"
+                         className="flex-1 bg-transparent border-none text-xs font-body outline-none text-on-surface-variant italic"
                        />
                        <span className="material-symbols-outlined text-sm opacity-30">lock</span>
                     </div>
@@ -130,7 +130,7 @@ const handleImageChange = (e) => {
 
                   {/* Danh mục cha */}
                   <div className="col-span-full space-y-1">
-                    <label className="block font-mono text-[10px] font-bold uppercase text-on-surface-variant tracking-widest">Danh mục cha</label>
+                    <label className="block font-body text-[10px] font-bold uppercase text-on-surface-variant tracking-widest">Danh mục cha</label>
                     <select 
                       value={form.parentId} onChange={e => setForm({...form, parentId: e.target.value})}
                       className="w-full bg-surface-low border border-outline-variant rounded-lg px-4 py-3 text-sm font-body outline-none focus:ring-1 focus:ring-primary/20 appearance-none cursor-pointer"
@@ -144,7 +144,7 @@ const handleImageChange = (e) => {
 
                   {/* Mô tả */}
                   <div className="col-span-full space-y-1">
-                    <label className="block font-mono text-[10px] font-bold uppercase text-on-surface-variant tracking-widest">Mô tả chi tiết</label>
+                    <label className="block font-body text-[10px] font-bold uppercase text-on-surface-variant tracking-widest">Mô tả chi tiết</label>
                     <textarea 
                       rows="6" value={form.description} onChange={e => setForm({...form, description: e.target.value})}
                       className="w-full bg-surface-low border border-outline-variant rounded-lg p-4 text-sm leading-relaxed font-body outline-none focus:ring-1 focus:ring-primary/20 resize-none"
@@ -159,7 +159,7 @@ const handleImageChange = (e) => {
           <div className="col-span-12 lg:col-span-4 space-y-6">
              {/* Ảnh đại diện */}
             <div className="bg-white border border-outline-variant p-6 shadow-sm">
-  <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest text-primary border-b border-outline-variant pb-2 mb-4">
+  <h4 className="font-body text-[10px] font-bold uppercase tracking-widest text-primary border-b border-outline-variant pb-2 mb-4">
     Ảnh đại diện lưu trữ
   </h4>
 
@@ -199,13 +199,13 @@ const handleImageChange = (e) => {
 
              {/* SEO Widget */}
              <div className="bg-primary/90 text-white p-6 rounded-lg shadow-xl space-y-4">
-                <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest border-b border-white/20 pb-2 italic">Tối ưu hóa Tìm kiếm (SEO)</h4>
+                <h4 className="font-body text-[10px] font-bold uppercase tracking-widest border-b border-white/20 pb-2 italic">Tối ưu hóa Tìm kiếm (SEO)</h4>
                 <div className="space-y-3">
                    <div className="flex flex-col gap-1">
                       <span className="text-[9px] opacity-60 font-bold uppercase">Từ khóa chính</span>
                       <div className="flex flex-wrap gap-1">
                          {['Văn hóa', 'Lịch sử'].map(t => (
-                           <span key={t} className="bg-white/10 px-2 py-0.5 rounded text-[9px] font-mono">#{t}</span>
+                           <span key={t} className="bg-white/10 px-2 py-0.5 rounded text-[9px] font-body">#{t}</span>
                          ))}
                       </div>
                    </div>

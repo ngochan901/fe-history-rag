@@ -124,7 +124,7 @@ const handleEditorImageInsert = (e) => {
              "Ghi chép ngàn năm, lưu truyền vạn thế"
            </p>
         </div>
-        <div className="flex gap-3 font-mono text-[10px] font-bold tracking-widest">
+        <div className="flex gap-3 font-body text-[10px] font-bold tracking-widest">
           <button 
             onClick={() => navigate('/admin/articles')} 
             className="px-6 py-2.5 border border-primary text-primary hover:bg-primary/5 transition-all uppercase"
@@ -149,7 +149,7 @@ const handleEditorImageInsert = (e) => {
           {/* Tiêu đề & Slug */}
           <section className="bg-white p-8 border border-outline-variant shadow-sm space-y-6">
             <div className="space-y-1">
-              <label className="font-mono text-[10px] uppercase font-bold text-on-surface-variant tracking-widest opacity-60 block">
+              <label className="font-body text-[10px] uppercase font-bold text-on-surface-variant tracking-widest opacity-60 block">
                 Tiêu đề sử liệu *
               </label>
               <input 
@@ -158,7 +158,7 @@ const handleEditorImageInsert = (e) => {
                 placeholder="Nhập tiêu đề trang trọng..."
               />
             </div>
-            <div className="flex items-center gap-2 text-on-surface-variant font-mono text-[11px]">
+            <div className="flex items-center gap-2 text-on-surface-variant font-body text-[11px]">
               <span className="opacity-50 lowercase tracking-normal italic">suviet.vn/bai-viet/</span>
               <input 
                 type="text" value={form.slug} onChange={e => setForm({...form, slug: e.target.value})}
@@ -169,7 +169,7 @@ const handleEditorImageInsert = (e) => {
 
           {/* Tóm tắt */}
           <section className="bg-white p-6 border border-outline-variant shadow-sm">
-            <label className="font-mono text-[10px] uppercase font-bold text-on-surface-variant mb-2 block tracking-widest opacity-60">
+            <label className="font-body text-[10px] uppercase font-bold text-on-surface-variant mb-2 block tracking-widest opacity-60">
               Tóm lược
             </label>
             <textarea rows="3" value={form.excerpt} onChange={e => setForm({...form, excerpt: e.target.value})} className="w-full bg-transparent border-none focus:ring-0 font-body text-sm italic leading-relaxed resize-none outline-none" placeholder="Mô tả ngắn gọn nội dung..." />
@@ -231,7 +231,7 @@ const handleEditorImageInsert = (e) => {
           
           {/* ẢNH ĐẠI DIỆN (UPLOAD) */}
           <div className="bg-white p-6 border border-outline-variant shadow-sm space-y-4">
-            <h3 className="font-mono text-[10px] font-bold text-primary uppercase border-b border-outline-variant pb-2 tracking-widest">Ảnh sử liệu</h3>
+            <h3 className="font-body text-[10px] font-bold text-primary uppercase border-b border-outline-variant pb-2 tracking-widest">Ảnh sử liệu</h3>
             
             <input 
               type="file" accept="image/*" className="hidden" 
@@ -246,7 +246,7 @@ const handleEditorImageInsert = (e) => {
                 <>
                   <img src={form.imagePreview} alt="Preview" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-                     <span className="text-white font-mono text-[10px] font-bold uppercase tracking-widest">Thay đổi ảnh</span>
+                     <span className="text-white font-body text-[10px] font-bold uppercase tracking-widest">Thay đổi ảnh</span>
                      <button 
                         onClick={removeImage}
                         className="p-2 bg-red-600 text-white rounded-full hover:scale-110 transition-transform shadow-lg"
@@ -259,7 +259,7 @@ const handleEditorImageInsert = (e) => {
               ) : (
                 <>
                   <span className="material-symbols-outlined text-4xl mb-2 group-hover:scale-110 transition-transform">add_photo_alternate</span>
-                  <span className="font-mono text-[9px] font-bold uppercase tracking-wider">Tải lên ảnh bìa</span>
+                  <span className="font-body text-[9px] font-bold uppercase tracking-wider">Tải lên ảnh bìa</span>
                 </>
               )}
             </div>
@@ -267,7 +267,7 @@ const handleEditorImageInsert = (e) => {
 
           {/* Thời kỳ */}
           <div className="bg-white p-6 border border-outline-variant shadow-sm space-y-4">
-            <h3 className="font-mono text-[10px] font-bold text-primary uppercase border-b border-outline-variant pb-2 tracking-widest">Thời kỳ lịch sử</h3>
+            <h3 className="font-body text-[10px] font-bold text-primary uppercase border-b border-outline-variant pb-2 tracking-widest">Thời kỳ lịch sử</h3>
             <select 
               value={form.period}
               onChange={e => setForm({...form, period: e.target.value})}
@@ -282,10 +282,10 @@ const handleEditorImageInsert = (e) => {
 
           {/* Thẻ Tags */}
           <div className="bg-white p-6 border border-outline-variant shadow-sm space-y-4">
-            <h3 className="font-mono text-[10px] font-bold text-primary uppercase border-b border-outline-variant pb-2 tracking-widest">Thẻ (Tags)</h3>
+            <h3 className="font-body text-[10px] font-bold text-primary uppercase border-b border-outline-variant pb-2 tracking-widest">Thẻ (Tags)</h3>
             <div className="flex flex-wrap gap-2">
               {form.tags.map(t => (
-                <span key={t} className="px-2 py-1 bg-primary/10 text-primary rounded-sm text-[9px] font-bold border border-primary/20 font-mono flex items-center gap-1">
+                <span key={t} className="px-2 py-1 bg-primary/10 text-primary rounded-sm text-[9px] font-bold border border-primary/20 font-body flex items-center gap-1">
                   #{t} 
                   <button 
                     onClick={(e) => { e.stopPropagation(); removeTag(t); }}
@@ -297,7 +297,7 @@ const handleEditorImageInsert = (e) => {
               ))}
             </div>
             <input 
-              className="w-full bg-transparent border-b border-outline-variant py-2 text-[11px] font-mono outline-none focus:border-primary placeholder:italic" 
+              className="w-full bg-transparent border-b border-outline-variant py-2 text-[11px] font-body outline-none focus:border-primary placeholder:italic" 
               placeholder="Gõ để thêm thẻ mới..." 
               onKeyDown={(e) => {
                 if (e.key === 'Enter' && e.target.value) {

@@ -57,7 +57,7 @@ const MetadataPeriodForm = () => {
 
     <button
       onClick={() => navigate(-1)}
-      className="px-5 py-2 border border-primary text-primary font-mono text-[10px] font-bold hover:bg-primary/5 transition-all uppercase"
+      className="px-5 py-2 border border-primary text-primary font-body text-[10px] font-bold hover:bg-primary/5 transition-all uppercase"
     >
       HỦY BỎ
     </button>
@@ -68,7 +68,7 @@ const MetadataPeriodForm = () => {
         alert("Đã lưu dữ liệu!");
         // navigate('/admin/periods')
       }}
-      className="px-6 py-2 bg-primary text-white font-mono text-[10px] font-bold shadow-lg hover:bg-primary-container flex items-center gap-2 transition-all uppercase"
+      className="px-6 py-2 bg-primary text-white font-body text-[10px] font-bold shadow-lg hover:bg-primary-container flex items-center gap-2 transition-all uppercase"
     >
       <span className="material-symbols-outlined text-sm">save</span>
       {isEdit ? 'LƯU THAY ĐỔI' : 'TẠO THỜI KỲ'}
@@ -87,7 +87,7 @@ const MetadataPeriodForm = () => {
                
                <div className="grid grid-cols-2 gap-8 relative z-10">
                   <div className="col-span-2 space-y-1">
-                    <label className="font-mono text-[10px] font-bold uppercase opacity-60">Tên Thời kỳ / Triều đại</label>
+                    <label className="font-body text-[10px] font-bold uppercase opacity-60">Tên Thời kỳ / Triều đại</label>
                     <input 
                       type="text" value={form.name} onChange={e => setForm({...form, name: e.target.value})}
                       className="w-full bg-transparent border-b-2 border-outline-variant focus:border-primary py-2 font-headline text-2xl text-primary outline-none transition-all"
@@ -95,7 +95,7 @@ const MetadataPeriodForm = () => {
                     />
                   </div>
                   <div className="space-y-1">
-                    <label className="font-mono text-[10px] font-bold uppercase opacity-60">Năm bắt đầu</label>
+                    <label className="font-body text-[10px] font-bold uppercase opacity-60">Năm bắt đầu</label>
                     <div className="flex gap-2">
                        <input type="number" value={form.startYear} className="flex-1 bg-surface-low border border-outline-variant rounded p-2 text-sm outline-none focus:ring-1 focus:ring-primary" placeholder="1009" />
                        <select className="bg-surface-low border border-outline-variant rounded px-2 text-[10px] font-bold">
@@ -104,7 +104,7 @@ const MetadataPeriodForm = () => {
                     </div>
                   </div>
                   <div className="space-y-1">
-                    <label className="font-mono text-[10px] font-bold uppercase opacity-60">Năm kết thúc</label>
+                    <label className="font-body text-[10px] font-bold uppercase opacity-60">Năm kết thúc</label>
                     <div className="flex gap-2">
                        <input type="number" value={form.endYear} className="flex-1 bg-surface-low border border-outline-variant rounded p-2 text-sm outline-none focus:ring-1 focus:ring-primary" placeholder="1225" />
                        <select className="bg-surface-low border border-outline-variant rounded px-2 text-[10px] font-bold">
@@ -122,11 +122,11 @@ const MetadataPeriodForm = () => {
                </h3>
                <div className="space-y-6">
                   <div className="space-y-1">
-                    <label className="font-mono text-[10px] font-bold uppercase opacity-60">Triết lý / Khẩu hiệu</label>
+                    <label className="font-body text-[10px] font-bold uppercase opacity-60">Triết lý / Khẩu hiệu</label>
                     <input type="text" value={form.philosophy} className="w-full bg-transparent border-b border-outline-variant focus:border-primary py-2 font-body text-base italic text-primary outline-none" placeholder="vd: Nam Quốc Sơn Hà Nam Đế Cư..." />
                   </div>
                   <div className="space-y-1">
-                    <label className="font-mono text-[10px] font-bold uppercase opacity-60">Mô tả chi tiết</label>
+                    <label className="font-body text-[10px] font-bold uppercase opacity-60">Mô tả chi tiết</label>
                     <textarea rows="6" value={form.description} className="w-full bg-surface-low border border-outline-variant rounded p-4 text-sm leading-relaxed outline-none focus:ring-1 focus:ring-primary/30 resize-none" placeholder="Viết về các thay đổi chính trị - xã hội..." />
                   </div>
                </div>
@@ -136,7 +136,7 @@ const MetadataPeriodForm = () => {
             <section className="bg-white p-8 border border-outline-variant shadow-sm rounded-lg">
                <div className="flex justify-between items-center mb-8">
                   <h3 className="font-headline text-xl text-primary font-bold italic">Các Vị Vua Tiêu Biểu</h3>
-                  <button className="font-mono text-[10px] font-bold text-primary hover:underline flex items-center gap-1">+ THÊM VỊ VUA</button>
+                  <button className="font-body text-[10px] font-bold text-primary hover:underline flex items-center gap-1">+ THÊM VỊ VUA</button>
                </div>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {form.emperors.map(emp => (
@@ -144,7 +144,7 @@ const MetadataPeriodForm = () => {
                        <img src={emp.img} className="w-12 h-12 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all border border-outline-variant" alt={emp.name} />
                        <div className="flex-1">
                           <p className="font-bold text-sm text-primary">{emp.name}</p>
-                          <p className="text-[10px] font-mono opacity-60 uppercase tracking-tighter">{emp.years}</p>
+                          <p className="text-[10px] font-body opacity-60 uppercase tracking-tighter">{emp.years}</p>
                        </div>
                        <button onClick={() => removeEmperor(emp.id)} className="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 hover:text-red-600">close</button>
                     </div>
@@ -158,7 +158,7 @@ const MetadataPeriodForm = () => {
              <div className="bg-primary text-white p-8 rounded-lg shadow-2xl relative overflow-hidden">
                 <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
                 <h4 className="font-headline text-2xl mb-8 border-b border-white/20 pb-4">Trình quản lý</h4>
-                <div className="space-y-4 font-mono text-[11px]">
+                <div className="space-y-4 font-body text-[11px]">
                    <div className="flex justify-between border-b border-white/10 pb-2">
                       <span className="opacity-60 uppercase">Dữ liệu RAG</span>
                       <span className="text-accent font-bold">ĐÃ ĐỒNG BỘ</span>
@@ -174,7 +174,7 @@ const MetadataPeriodForm = () => {
              </div>
 
              <div className="bg-white p-6 border border-outline-variant shadow-sm">
-                <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest text-on-surface-variant border-b border-outline-variant pb-2 mb-4">Hình ảnh Đặc trưng</h4>
+                <h4 className="font-body text-[10px] font-bold uppercase tracking-widest text-on-surface-variant border-b border-outline-variant pb-2 mb-4">Hình ảnh Đặc trưng</h4>
                 <div className="aspect-[4/3] bg-surface-low border-2 border-dashed border-outline-variant flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all group overflow-hidden relative">
                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC985CMRZP23HpJ5za85ebR1crUKhsr0KCyJ_BcF266K2Sz4XpMW5IxI4b43YV0Q4sm4n5_61Nt7iLIX_owe7vciBN27Tl2TOr70qKuktVe_M0TE2Y4a6lnt7_UixDOQoLkeJHFYonX0sxb9kEpl1tE-f2boPacsBAa9VxbOi0iXjlzn0JLIPF_XLpVuxdVmm8jFd3nKtO2eEJndLW5vwfSlYORL9ZKKoqIjJso5kawMxks1hpaqWDyNDHzWNGTJ0Lb3jnQiRZlfRU" className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700" alt="period" />
                    <span className="material-symbols-outlined text-3xl relative z-10">cloud_upload</span>

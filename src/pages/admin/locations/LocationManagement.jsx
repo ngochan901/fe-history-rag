@@ -52,7 +52,7 @@ const LocationManagement = () => {
                 <select className="bg-white border border-outline-variant rounded px-3 py-1.5 text-xs outline-none"><option>Tất cả triều đại</option></select>
              </div>
              <table className="w-full text-left border-collapse">
-                <thead className="bg-surface-variant/30 font-mono text-[10px] uppercase tracking-widest border-b border-outline-variant text-on-surface-variant">
+                <thead className="bg-surface-variant/30 font-body text-[10px] uppercase tracking-widest border-b border-outline-variant text-on-surface-variant">
                   <tr>
                     <th className="p-4">ID</th>
                     <th className="p-4">Địa danh</th>
@@ -64,12 +64,12 @@ const LocationManagement = () => {
                 <tbody className="divide-y divide-outline-variant text-sm">
                   {locations.map((loc, idx) => (
                     <tr key={loc.id} className={`${idx % 2 !== 0 ? 'bg-surface-low/30' : ''} hover:bg-surface-variant/20 transition-colors group`}>
-                      <td className="p-4 font-mono text-xs text-primary">{loc.id}</td>
+                      <td className="p-4 font-body text-xs text-primary">{loc.id}</td>
                       <td className="p-4 font-bold text-on-surface font-headline">{loc.name}</td>
                       <td className="p-4 text-xs">
                         <span className="bg-surface-variant px-2 py-0.5 rounded text-[10px]">{loc.type}</span>
                       </td>
-                      <td className="p-4 font-mono text-[11px] opacity-60">{loc.coords}</td>
+                      <td className="p-4 font-body text-[11px] opacity-60">{loc.coords}</td>
                       <td className="p-4 text-right">
                         <div className="flex justify-end gap-1">
                           <button onClick={() => navigate(`/admin/locations/edit/${loc.id}`)} className="p-2 hover:text-primary"><span className="material-symbols-outlined text-sm">edit</span></button>
@@ -86,7 +86,7 @@ const LocationManagement = () => {
           <div className="col-span-12 lg:col-span-3 space-y-6">
              <div className="bg-white border border-outline-variant rounded-xl overflow-hidden shadow-md">
                 <div className="p-3 bg-surface-low border-b border-outline-variant flex justify-between items-center">
-                  <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-primary">Bản đồ Di tích</span>
+                  <span className="font-body text-[10px] font-bold uppercase tracking-widest text-primary">Bản đồ Di tích</span>
                   <span className="material-symbols-outlined text-sm text-primary">explore</span>
                 </div>
                 <div className="aspect-square bg-slate-200 relative group overflow-hidden">
@@ -112,7 +112,7 @@ const LocationManagement = () => {
              </div>
              <h3 className="font-headline text-2xl text-on-surface font-bold mb-2 uppercase">Xác nhận xóa?</h3>
              <p className="font-body text-sm text-on-surface-variant mb-10">Bạn chắc chắn muốn xóa địa danh <br/><strong className="text-primary italic">"{deleteModal.name}"</strong>? <br/>Dữ liệu này không thể khôi phục.</p>
-             <div className="flex gap-4 font-mono text-[11px] font-bold tracking-widest">
+             <div className="flex gap-4 font-body text-[11px] font-bold tracking-widest">
                 <button onClick={() => setDeleteModal({ open: false })} className="flex-1 py-3 border border-outline rounded-lg hover:bg-surface-low transition-all">HỦY BỎ</button>
                 <button className="flex-1 py-3 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition-all">XÓA NGAY</button>
              </div>
@@ -126,7 +126,7 @@ const LocationManagement = () => {
 const StatCard = ({ title, value, icon }) => (
   <div className="bg-white border border-outline-variant p-6 rounded-xl flex items-center justify-between shadow-sm hover:-translate-y-1 transition-all">
     <div>
-      <p className="font-mono text-[10px] text-on-surface-variant uppercase tracking-widest">{title}</p>
+      <p className="font-body text-[10px] text-on-surface-variant uppercase tracking-widest">{title}</p>
       <h3 className="font-headline text-3xl text-primary font-bold mt-1">{value}</h3>
     </div>
     <span className="material-symbols-outlined text-primary-container opacity-20 text-4xl">{icon}</span>
